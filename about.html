@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ShambaNi Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="./index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+        ShambaNi
+      </a>
+      <div class="nav-links">
+        <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="./browse.html"><i class="fas fa-search"></i> Browse</a>
+        <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD</a>
+        <a href="./about.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+        <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell</a>
+        <a href="./admin/index.html" class="admin-link"><i class="fas fa-cog"></i> Admin</a>
+        <a href="./cart.html" id="nav-cart-btn" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+      </div>
+      <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <span class="flag-icon">&#127468;&#127463;</span>
+            <span class="lang-code">EN</span>
+            <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+          </button>
+          <div class="lang-dropdown">
+            <button data-lang="en"><span class="flag-icon">&#127468;&#127463;</span> English</button>
+            <button data-lang="sw"><span class="flag-icon">&#127472;&#127466;</span> Kiswahili</button>
+            <button data-lang="rw"><span class="flag-icon">&#127479;&#127484;</span> Runyarwanda</button>
+            <button data-lang="lg"><span class="flag-icon">&#127482;&#127468;</span> Luganda</button>
+          </div>
+        </div>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./browse.html"><i class="fas fa-search"></i> Browse Produce</a>
+    <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+    <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD *220#</a>
+    <a href="./about.html" class="active"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell as Farmer</a>
+    <a href="./admin/index.html"><i class="fas fa-cog"></i> Admin Dashboard</a>
+  </div>
+
+  <div class="page-content">
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <h1>About ShambaNi</h1>
+        <p>We are on a mission to transform agriculture in East Africa by connecting farmers directly with buyers, eliminating middlemen, and ensuring fair prices for everyone.</p>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section" id="mission">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Mission</h2>
+          <p>Empowering farmers, feeding communities</p>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <div class="mission-icon" style="background:linear-gradient(135deg,#4CAF50,#2E7D32)"><i class="fas fa-hand-holding-usd"></i></div>
+            <h3>Fair Prices</h3>
+            <p>We eliminate middlemen so farmers earn more and buyers pay less. Our transparent pricing ensures everyone gets a fair deal.</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon" style="background:linear-gradient(135deg,#FF9800,#F57C00)"><i class="fas fa-tractor"></i></div>
+            <h3>Empower Farmers</h3>
+            <p>We give smallholder farmers direct access to thousands of buyers, tools to manage their business, and fair payment systems.</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon" style="background:linear-gradient(135deg,#2196F3,#1565C0)"><i class="fas fa-leaf"></i></div>
+            <h3>Fresh & Sustainable</h3>
+            <p>By connecting local farms to nearby buyers, we reduce food miles, ensure freshness, and promote sustainable farming practices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- East Africa Coverage -->
+    <section class="section" style="background:var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Coverage Across East Africa</h2>
+          <p>Operating in 4 countries with deep local presence</p>
+        </div>
+        <div class="coverage-grid">
+          <div class="coverage-card">
+            <div class="coverage-flag">&#127468;&#127463;</div>
+            <h4>Uganda</h4>
+            <p>111 Districts Covered</p>
+            <div class="coverage-stat">111</div>
+            <p style="font-size:0.8rem;color:var(--text-muted);">Central, Western, Eastern, Northern Regions</p>
+          </div>
+          <div class="coverage-card">
+            <div class="coverage-flag">&#127472;&#127466;</div>
+            <h4>Kenya</h4>
+            <p>47 Counties Covered</p>
+            <div class="coverage-stat">47</div>
+            <p style="font-size:0.8rem;color:var(--text-muted);">Nairobi, Central, Rift Valley, Coast & more</p>
+          </div>
+          <div class="coverage-card">
+            <div class="coverage-flag">&#127481;&#127487;</div>
+            <h4>Tanzania</h4>
+            <p>31 Regions Covered</p>
+            <div class="coverage-stat">31</div>
+            <p style="font-size:0.8rem;color:var(--text-muted);">Dar es Salaam, Arusha, Mwanza & more</p>
+          </div>
+          <div class="coverage-card">
+            <div class="coverage-flag">&#127479;&#127484;</div>
+            <h4>Rwanda</h4>
+            <p>30 Districts Covered</p>
+            <div class="coverage-stat">30</div>
+            <p style="font-size:0.8rem;color:var(--text-muted);">Kigali, Northern, Southern, Western, Eastern</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Available in 4 Languages</h2>
+          <p>ShambaNi speaks your language</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto;">
+          <div style="background:var(--white);border-radius:16px;padding:30px;text-align:center;box-shadow:var(--shadow-sm);transition:var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="font-size:3rem;margin-bottom:12px;">&#127468;&#127463;</div>
+            <h4 style="color:var(--green-900);margin-bottom:4px;">English</h4>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Full platform support</p>
+            <span class="badge badge-success" style="margin-top:10px;">Active</span>
+          </div>
+          <div style="background:var(--white);border-radius:16px;padding:30px;text-align:center;box-shadow:var(--shadow-sm);transition:var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="font-size:3rem;margin-bottom:12px;">&#127472;&#127466;</div>
+            <h4 style="color:var(--green-900);margin-bottom:4px;">Kiswahili</h4>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Full platform support</p>
+            <span class="badge badge-success" style="margin-top:10px;">Active</span>
+          </div>
+          <div style="background:var(--white);border-radius:16px;padding:30px;text-align:center;box-shadow:var(--shadow-sm);transition:var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="font-size:3rem;margin-bottom:12px;">&#127479;&#127484;</div>
+            <h4 style="color:var(--green-900);margin-bottom:4px;">Runyarwanda</h4>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Full platform support</p>
+            <span class="badge badge-success" style="margin-top:10px;">Active</span>
+          </div>
+          <div style="background:var(--white);border-radius:16px;padding:30px;text-align:center;box-shadow:var(--shadow-sm);transition:var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="font-size:3rem;margin-bottom:12px;">&#127482;&#127468;</div>
+            <h4 style="color:var(--green-900);margin-bottom:4px;">Luganda</h4>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Full platform support</p>
+            <span class="badge badge-success" style="margin-top:10px;">Active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="section" style="background:var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Payment Methods</h2>
+          <p>Multiple secure payment options</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:700px;margin:0 auto;">
+          <div style="background:var(--cream);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;border:2px solid var(--blue-light);">
+            <div style="width:56px;height:56px;border-radius:12px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--blue);"><i class="fab fa-paypal"></i></div>
+            <div>
+              <h4 style="font-size:1rem;">PayPal</h4>
+              <p style="font-size:0.85rem;color:var(--text-muted);">@LutwamaReagan</p>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;border:2px solid var(--red-light);">
+            <div style="width:56px;height:56px;border-radius:12px;background:var(--red-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--red);"><i class="fas fa-mobile-alt"></i></div>
+            <div>
+              <h4 style="font-size:1rem;">Airtel Money</h4>
+              <p style="font-size:0.85rem;color:var(--text-muted);">Across all 4 countries</p>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;border:2px solid var(--orange-light);">
+            <div style="width:56px;height:56px;border-radius:12px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--orange);"><i class="fas fa-mobile"></i></div>
+            <div>
+              <h4 style="font-size:1rem;">MTN Mobile Money</h4>
+              <p style="font-size:0.85rem;color:var(--text-muted);">Uganda, Rwanda & Tanzania</p>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;border:2px solid var(--purple-light);">
+            <div style="width:56px;height:56px;border-radius:12px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--purple);"><i class="fas fa-university"></i></div>
+            <div>
+              <h4 style="font-size:1rem;">Bank Transfer</h4>
+              <p style="font-size:0.85rem;color:var(--text-muted);">All major banks supported</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>Got questions? We have answers</p>
+        </div>
+        <div style="max-width:700px;margin:0 auto;">
+          <div class="accordion-item open">
+            <div class="accordion-header"><span>What is ShambaNi?</span><i class="fas fa-chevron-down"></i></div>
+            <div class="accordion-body"><p>ShambaNi is a digital marketplace that connects farmers directly with buyers across East Africa. We eliminate middlemen to ensure farmers get fair prices and buyers get fresh produce at affordable rates.</p></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header"><span>Which countries do you operate in?</span><i class="fas fa-chevron-down"></i></div>
+            <div class="accordion-body"><p>We currently operate in 4 East African countries: Uganda (111 districts), Kenya (47 counties), Tanzania (31 regions), and Rwanda (30 districts).</p></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header"><span>How do I become a seller?</span><i class="fas fa-chevron-down"></i></div>
+            <div class="accordion-body"><p>Simply go to the <a href="./farmer-register.html" style="color:var(--green-600);font-weight:600;">Farmer Registration</a> page and complete our 4-step wizard. You'll need to provide personal information, farm details, and payment setup. Approval usually takes 24-48 hours.</p></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header"><span>What payment methods are accepted?</span><i class="fas fa-chevron-down"></i></div>
+            <div class="accordion-body"><p>We accept PayPal (@LutwamaReagan), Airtel Money, MTN Mobile Money, and Bank Transfer. All payments are secure and processed instantly.</p></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header"><span>Is there a platform fee?</span><i class="fas fa-chevron-down"></i></div>
+            <div class="accordion-body"><p>Yes, we charge a small 2.5% platform fee on each transaction to maintain the marketplace, provide customer support, and ensure secure payments. This is one of the lowest rates in the industry.</p></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header"><span>How is delivery handled?</span><i class="fas fa-chevron-down"></i></div>
+            <div class="accordion-body"><p>Buyers can choose between farm pickup or doorstep delivery. We partner with local logistics providers to ensure timely delivery. Delivery is free for orders above UGX 50,000.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" style="background:var(--white);" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contact Us</h2>
+          <p>We'd love to hear from you</p>
+        </div>
+        <div style="max-width:600px;margin:0 auto;">
+          <div style="background:var(--cream);border-radius:16px;padding:30px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+              <div style="text-align:center;padding:20px;background:var(--white);border-radius:12px;">
+                <i class="fas fa-envelope" style="font-size:1.5rem;color:var(--green-500);margin-bottom:8px;"></i>
+                <p style="font-weight:600;font-size:0.9rem;">Email</p>
+                <a href="mailto:info@shambani.com" style="color:var(--green-600);font-size:0.85rem;">info@shambani.com</a>
+              </div>
+              <div style="text-align:center;padding:20px;background:var(--white);border-radius:12px;">
+                <i class="fas fa-phone" style="font-size:1.5rem;color:var(--green-500);margin-bottom:8px;"></i>
+                <p style="font-weight:600;font-size:0.9rem;">Phone</p>
+                <a href="tel:+256700123456" style="color:var(--green-600);font-size:0.85rem;">+256 700 123 456</a>
+              </div>
+            </div>
+            <div style="text-align:center;padding:20px;background:var(--white);border-radius:12px;">
+              <i class="fas fa-map-marker-alt" style="font-size:1.5rem;color:var(--green-500);margin-bottom:8px;"></i>
+              <p style="font-weight:600;font-size:0.9rem;">Office</p>
+              <p style="color:var(--text-muted);font-size:0.85rem;">Plot 24, Kampala Road, Kampala, Uganda</p>
+            </div>
+            <div style="text-align:center;margin-top:16px;">
+              <a href="https://wa.me/256700123456" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="logo"><div class="logo-icon"><i class="fas fa-leaf"></i></div>ShambaNi</a>
+          <p>Connecting farmers to buyers across East Africa.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./browse.html">Browse Produce</a>
+          <a href="./farmer-register.html">Register as Farmer</a>
+          <a href="./ussd.html">USSD *220#</a>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:info@shambani.com"><i class="fas fa-envelope" style="margin-right:6px;"></i>info@shambani.com</a>
+          <a href="tel:+256700123456"><i class="fas fa-phone" style="margin-right:6px;"></i>+256 700 123 456</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShambaNi Marketplace. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - ShambaNi Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="admin-sidebar">
+      <a href="../index.html" class="logo" style="color:white;">
+        <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+        ShambaNi
+      </a>
+
+      <button class="admin-nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+      </button>
+      <button class="admin-nav-item" data-page="farmers" onclick="showPage('farmers')">
+        <i class="fas fa-users"></i> Farmers
+      </button>
+      <button class="admin-nav-item" data-page="orders" onclick="showPage('orders')">
+        <i class="fas fa-shopping-cart"></i> Orders
+      </button>
+      <button class="admin-nav-item" data-page="products" onclick="showPage('products')">
+        <i class="fas fa-box-open"></i> Products
+      </button>
+      <button class="admin-nav-item" data-page="payments" onclick="showPage('payments')">
+        <i class="fas fa-wallet"></i> Payments
+      </button>
+      <button class="admin-nav-item" data-page="analytics" onclick="showPage('analytics')">
+        <i class="fas fa-chart-line"></i> Analytics
+      </button>
+      <button class="admin-nav-item" data-page="settings" onclick="showPage('settings')">
+        <i class="fas fa-cog"></i> Settings
+      </button>
+
+      <div class="admin-sidebar-section">
+        <div class="admin-sidebar-section-title">Quick Links</div>
+        <a href="../index.html" class="admin-nav-item" style="text-decoration:none;">
+          <i class="fas fa-home"></i> View Site
+        </a>
+        <a href="../browse.html" class="admin-nav-item" style="text-decoration:none;">
+          <i class="fas fa-search"></i> Browse
+        </a>
+        <a href="../cart.html" class="admin-nav-item" style="text-decoration:none;">
+          <i class="fas fa-shopping-cart"></i> Cart
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="admin-main">
+      <!-- Header -->
+      <div class="admin-header">
+        <h1 id="page-title"><i class="fas fa-tachometer-alt" style="color:var(--green-400);margin-right:10px;"></i>Dashboard Overview</h1>
+        <div class="admin-header-actions">
+          <a href="../index.html" class="admin-btn admin-btn-secondary"><i class="fas fa-external-link-alt"></i> View Site</a>
+          <button class="admin-btn admin-btn-primary"><i class="fas fa-plus"></i> Add Product</button>
+        </div>
+      </div>
+
+      <!-- ==================== DASHBOARD PAGE ==================== -->
+      <div id="page-dashboard" class="admin-page">
+        <!-- Stats Grid -->
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Total Farmers</span>
+              <div class="admin-stat-icon" style="background:rgba(76,175,80,0.15);color:var(--green-400);"><i class="fas fa-users"></i></div>
+            </div>
+            <div class="admin-stat-value">1,248</div>
+            <div class="admin-stat-change positive"><i class="fas fa-arrow-up"></i> +12% from last month</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Total Orders</span>
+              <div class="admin-stat-icon" style="background:rgba(25,118,210,0.15);color:#64B5F6;"><i class="fas fa-shopping-cart"></i></div>
+            </div>
+            <div class="admin-stat-value">3,847</div>
+            <div class="admin-stat-change positive"><i class="fas fa-arrow-up"></i> +8% from last month</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Revenue (UGX)</span>
+              <div class="admin-stat-icon" style="background:rgba(245,124,0,0.15);color:#FFB74D;"><i class="fas fa-coins"></i></div>
+            </div>
+            <div class="admin-stat-value">142.5M</div>
+            <div class="admin-stat-change positive"><i class="fas fa-arrow-up"></i> +18% from last month</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Products Listed</span>
+              <div class="admin-stat-icon" style="background:rgba(156,39,176,0.15);color:#CE93D8;"><i class="fas fa-box-open"></i></div>
+            </div>
+            <div class="admin-stat-value">2,156</div>
+            <div class="admin-stat-change positive"><i class="fas fa-arrow-up"></i> +5% from last month</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Pending Approvals</span>
+              <div class="admin-stat-icon" style="background:rgba(229,57,53,0.15);color:#EF5350;"><i class="fas fa-clock"></i></div>
+            </div>
+            <div class="admin-stat-value">24</div>
+            <div class="admin-stat-change negative"><i class="fas fa-arrow-up"></i> Requires attention</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Avg Order Value</span>
+              <div class="admin-stat-icon" style="background:rgba(0,137,123,0.15);color:#4DB6AC;"><i class="fas fa-chart-bar"></i></div>
+            </div>
+            <div class="admin-stat-value">UGX 37K</div>
+            <div class="admin-stat-change positive"><i class="fas fa-arrow-up"></i> +3% from last month</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;">
+          <!-- Revenue Chart -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-chart-area" style="color:var(--green-400);margin-right:8px;"></i>Revenue Trend</h3>
+              <select style="background:#0f172a;border:1px solid #334155;color:#94a3b8;padding:4px 10px;border-radius:6px;font-size:0.8rem;">
+                <option>Last 6 Months</option>
+                <option>Last 12 Months</option>
+                <option>This Year</option>
+              </select>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-chart-container">
+                <canvas id="dashboardRevenueChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Approvals -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-user-clock" style="color:var(--orange);margin-right:8px;"></i>Pending Approvals</h3>
+              <span class="badge badge-warning">24 new</span>
+            </div>
+            <div class="admin-card-body" style="padding:0;">
+              <table class="admin-table">
+                <thead>
+                  <tr><th>Farmer</th><th>Location</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Emmanuel O.</strong><br><span style="font-size:0.75rem;color:#64748b;">2 hrs ago</span></td>
+                    <td style="font-size:0.85rem;">Jinja, UG</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Grace M.</strong><br><span style="font-size:0.75rem;color:#64748b;">5 hrs ago</span></td>
+                    <td style="font-size:0.85rem;">Nairobi, KE</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Peter K.</strong><br><span style="font-size:0.75rem;color:#64748b;">8 hrs ago</span></td>
+                    <td style="font-size:0.85rem;">Mwanza, TZ</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Jeanne D.</strong><br><span style="font-size:0.75rem;color:#64748b;">12 hrs ago</span></td>
+                    <td style="font-size:0.85rem;">Kigali, RW</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tom S.</strong><br><span style="font-size:0.75rem;color:#64748b;">1 day ago</span></td>
+                    <td style="font-size:0.85rem;">Gulu, UG</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="admin-card" style="margin-top:24px;">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-list" style="color:var(--green-400);margin-right:8px;"></i>Recent Orders</h3>
+            <button class="admin-btn admin-btn-sm admin-btn-secondary" onclick="showPage('orders')">View All</button>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#ORD-3847</strong></td>
+                  <td>Sarah Kimani</td>
+                  <td>Tomatoes, Peppers</td>
+                  <td>UGX 5,500</td>
+                  <td><span class="badge badge-info">MTN MoMo</span></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">2 hrs ago</td>
+                </tr>
+                <tr>
+                  <td><strong>#ORD-3846</strong></td>
+                  <td>Michael Ouma</td>
+                  <td>Bananas, Milk</td>
+                  <td>UGX 9,500</td>
+                  <td><span class="badge badge-info">Airtel</span></td>
+                  <td><span class="badge badge-warning">In Transit</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">5 hrs ago</td>
+                </tr>
+                <tr>
+                  <td><strong>#ORD-3845</strong></td>
+                  <td>Patricia N.</td>
+                  <td>Eggs, Chicken</td>
+                  <td>UGX 30,000</td>
+                  <td><span class="badge badge-info">PayPal</span></td>
+                  <td><span class="badge badge-warning">Processing</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">8 hrs ago</td>
+                </tr>
+                <tr>
+                  <td><strong>#ORD-3844</strong></td>
+                  <td>David Mwangi</td>
+                  <td>Rice, Beans</td>
+                  <td>UGX 22,500</td>
+                  <td><span class="badge badge-info">Bank</span></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">1 day ago</td>
+                </tr>
+                <tr>
+                  <td><strong>#ORD-3843</strong></td>
+                  <td>Jane Akello</td>
+                  <td>Carrots, Cabbage</td>
+                  <td>UGX 5,000</td>
+                  <td><span class="badge badge-info">MTN MoMo</span></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">1 day ago</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== FARMERS PAGE ==================== -->
+      <div id="page-farmers" class="admin-page hidden">
+        <div class="admin-search">
+          <input type="text" id="farmer-search" placeholder="Search farmers by name, location..." oninput="filterFarmers()">
+          <select id="farmer-filter" onchange="filterFarmers()" style="background:#0f172a;border:1px solid #334155;color:#94a3b8;padding:10px 16px;border-radius:6px;">
+            <option value="all">All Farmers</option>
+            <option value="approved">Approved</option>
+            <option value="pending">Pending</option>
+            <option value="suspended">Suspended</option>
+          </select>
+          <button class="admin-btn admin-btn-primary"><i class="fas fa-plus"></i> Add Farmer</button>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Farmers</h3>
+            <span style="font-size:0.85rem;color:#94a3b8;">Showing <span id="farmer-count">10</span> farmers</span>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <table class="admin-table" id="farmers-table">
+              <thead>
+                <tr>
+                  <th>Farmer</th><th>Location</th><th>Products</th><th>Orders</th><th>Rating</th><th>Status</th><th>Joined</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="approved">
+                  <td><strong>John Mukasa</strong><br><span style="font-size:0.75rem;color:#64748b;">john@email.com</span></td>
+                  <td>Mukono, UG</td>
+                  <td>Tomatoes, Peppers</td>
+                  <td>156</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 4.8</td>
+                  <td><span class="badge badge-success">Approved</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Jan 2025</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-warning"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="approved">
+                  <td><strong>Sarah Auma</strong><br><span style="font-size:0.75rem;color:#64748b;">sarah@email.com</span></td>
+                  <td>Jinja, UG</td>
+                  <td>Vegetables</td>
+                  <td>98</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 4.6</td>
+                  <td><span class="badge badge-success">Approved</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Feb 2025</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-warning"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="approved">
+                  <td><strong>Esther Nalubega</strong><br><span style="font-size:0.75rem;color:#64748b;">esther@email.com</span></td>
+                  <td>Wakiso, UG</td>
+                  <td>Eggs, Chicken</td>
+                  <td>203</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 4.7</td>
+                  <td><span class="badge badge-success">Approved</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Dec 2024</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-warning"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="approved">
+                  <td><strong>Patrick Ochieng</strong><br><span style="font-size:0.75rem;color:#64748b;">patrick@email.com</span></td>
+                  <td>Mbarara, UG</td>
+                  <td>Bananas, Fruits</td>
+                  <td>87</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 4.9</td>
+                  <td><span class="badge badge-success">Approved</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Mar 2025</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-warning"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="approved">
+                  <td><strong>Grace Akello</strong><br><span style="font-size:0.75rem;color:#64748b;">grace@email.com</span></td>
+                  <td>Gulu, UG</td>
+                  <td>Grains, Beans</td>
+                  <td>64</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 4.5</td>
+                  <td><span class="badge badge-success">Approved</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Jan 2025</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-warning"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="pending">
+                  <td><strong>Emmanuel Okot</strong><br><span style="font-size:0.75rem;color:#64748b;">emma@email.com</span></td>
+                  <td>Jinja, UG</td>
+                  <td>Fish, Tilapia</td>
+                  <td>0</td>
+                  <td><i class="fas fa-star" style="color:#64748b;"></i> -</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Today</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="pending">
+                  <td><strong>Grace Mutua</strong><br><span style="font-size:0.75rem;color:#64748b;">grace.m@email.com</span></td>
+                  <td>Nairobi, KE</td>
+                  <td>Vegetables</td>
+                  <td>0</td>
+                  <td><i class="fas fa-star" style="color:#64748b;"></i> -</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Today</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="pending">
+                  <td><strong>Peter Kavishe</strong><br><span style="font-size:0.75rem;color:#64748b;">peter@email.com</span></td>
+                  <td>Mwanza, TZ</td>
+                  <td>Fruits, Rice</td>
+                  <td>0</td>
+                  <td><i class="fas fa-star" style="color:#64748b;"></i> -</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Yesterday</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer approved!','success')"><i class="fas fa-check"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Farmer rejected','error')"><i class="fas fa-times"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="approved">
+                  <td><strong>David Kato</strong><br><span style="font-size:0.75rem;color:#64748b;">david@email.com</span></td>
+                  <td>Masaka, UG</td>
+                  <td>Chicken, Meat</td>
+                  <td>112</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 4.8</td>
+                  <td><span class="badge badge-success">Approved</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Nov 2024</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-warning"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="suspended">
+                  <td><strong>Robert Mugabe</strong><br><span style="font-size:0.75rem;color:#64748b;">robert@email.com</span></td>
+                  <td>Kigali, RW</td>
+                  <td>Spices</td>
+                  <td>23</td>
+                  <td><i class="fas fa-star" style="color:#FFC107;"></i> 3.2</td>
+                  <td><span class="badge badge-danger">Suspended</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">Oct 2024</td>
+                  <td class="actions">
+                    <button class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-eye"></i></button>
+                    <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Farmer reinstated!','success')"><i class="fas fa-undo"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== ORDERS PAGE ==================== -->
+      <div id="page-orders" class="admin-page hidden">
+        <div class="admin-tabs">
+          <button class="admin-tab active" onclick="filterOrders('all',this)">All Orders</button>
+          <button class="admin-tab" onclick="filterOrders('delivered',this)">Delivered</button>
+          <button class="admin-tab" onclick="filterOrders('transit',this)">In Transit</button>
+          <button class="admin-tab" onclick="filterOrders('processing',this)">Processing</button>
+          <button class="admin-tab" onclick="filterOrders('cancelled',this)">Cancelled</button>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Orders</h3>
+            <div class="admin-search" style="margin:0;width:300px;">
+              <input type="text" placeholder="Search orders..." oninput="filterOrderSearch(this)">
+            </div>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <table class="admin-table" id="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th><th>Customer</th><th>Farmer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="delivered">
+                  <td><strong>#ORD-3847</strong></td>
+                  <td>Sarah Kimani</td>
+                  <td>John Mukasa</td>
+                  <td>Tomatoes, Peppers</td>
+                  <td>UGX 5,500</td>
+                  <td><span class="badge badge-info">MTN MoMo</span></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">2 hrs ago</td>
+                </tr>
+                <tr data-status="transit">
+                  <td><strong>#ORD-3846</strong></td>
+                  <td>Michael Ouma</td>
+                  <td>Esther Nalubega</td>
+                  <td>Bananas (2), Milk (3L)</td>
+                  <td>UGX 9,500</td>
+                  <td><span class="badge badge-info">Airtel</span></td>
+                  <td><span class="badge badge-warning">In Transit</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">5 hrs ago</td>
+                </tr>
+                <tr data-status="processing">
+                  <td><strong>#ORD-3845</strong></td>
+                  <td>Patricia Nakato</td>
+                  <td>David Kato</td>
+                  <td>Eggs (2tray), Chicken</td>
+                  <td>UGX 30,000</td>
+                  <td><span class="badge badge-info">PayPal</span></td>
+                  <td><span class="badge badge-warning">Processing</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">8 hrs ago</td>
+                </tr>
+                <tr data-status="delivered">
+                  <td><strong>#ORD-3844</strong></td>
+                  <td>David Mwangi</td>
+                  <td>Grace Akello</td>
+                  <td>Rice (5kg), Beans (3kg)</td>
+                  <td>UGX 22,500</td>
+                  <td><span class="badge badge-info">Bank</span></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">1 day ago</td>
+                </tr>
+                <tr data-status="delivered">
+                  <td><strong>#ORD-3843</strong></td>
+                  <td>Jane Akello</td>
+                  <td>Sarah Auma</td>
+                  <td>Carrots, Cabbage, Onions</td>
+                  <td>UGX 5,000</td>
+                  <td><span class="badge badge-info">MTN MoMo</span></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">1 day ago</td>
+                </tr>
+                <tr data-status="processing">
+                  <td><strong>#ORD-3842</strong></td>
+                  <td>Charles Odongo</td>
+                  <td>Patrick Ochieng</td>
+                  <td>Bananas (5), Pineapples</td>
+                  <td>UGX 41,000</td>
+                  <td><span class="badge badge-info">Airtel</span></td>
+                  <td><span class="badge badge-warning">Processing</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">2 days ago</td>
+                </tr>
+                <tr data-status="cancelled">
+                  <td><strong>#ORD-3841</strong></td>
+                  <td>Mary Nankya</td>
+                  <td>David Kato</td>
+                  <td>Goat Meat (2kg)</td>
+                  <td>UGX 28,000</td>
+                  <td><span class="badge badge-info">MTN MoMo</span></td>
+                  <td><span class="badge badge-danger">Cancelled</span></td>
+                  <td style="font-size:0.8rem;color:#64748b;">2 days ago</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PRODUCTS PAGE ==================== -->
+      <div id="page-products" class="admin-page hidden">
+        <div class="admin-search">
+          <input type="text" id="product-search" placeholder="Search products..." oninput="filterProducts()">
+          <select style="background:#0f172a;border:1px solid #334155;color:#94a3b8;padding:10px 16px;border-radius:6px;">
+            <option>All Categories</option>
+            <option>Vegetables</option>
+            <option>Fruits</option>
+            <option>Grains</option>
+            <option>Dairy</option>
+            <option>Meat</option>
+          </select>
+          <button class="admin-btn admin-btn-primary"><i class="fas fa-plus"></i> Add Product</button>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Products</h3>
+            <span style="font-size:0.85rem;color:#94a3b8;">8 products listed</span>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <table class="admin-table" id="products-table">
+              <thead>
+                <tr>
+                  <th>Product</th><th>Category</th><th>Farmer</th><th>Price</th><th>Stock</th><th>Status</th><th>Toggle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fresh Tomatoes</strong></td>
+                  <td><span class="badge badge-success">Vegetables</span></td>
+                  <td>John Mukasa</td>
+                  <td>UGX 3,500</td>
+                  <td>45 boxes</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Green Peppers</strong></td>
+                  <td><span class="badge badge-success">Vegetables</span></td>
+                  <td>Sarah Auma</td>
+                  <td>UGX 2,000</td>
+                  <td>30 kg</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Sweet Bananas</strong></td>
+                  <td><span class="badge badge-warning">Fruits</span></td>
+                  <td>Patrick Ochieng</td>
+                  <td>UGX 7,000</td>
+                  <td>80 bunches</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Fresh Eggs</strong></td>
+                  <td><span class="badge badge-info">Dairy</span></td>
+                  <td>Esther Nalubega</td>
+                  <td>UGX 12,000</td>
+                  <td>200 trays</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Maize Flour</strong></td>
+                  <td><span class="badge badge-secondary">Grains</span></td>
+                  <td>Grace Akello</td>
+                  <td>UGX 8,500</td>
+                  <td>60 bags</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Whole Chicken</strong></td>
+                  <td><span class="badge badge-danger">Meat</span></td>
+                  <td>David Kato</td>
+                  <td>UGX 18,000</td>
+                  <td>25 pcs</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Fresh Tilapia</strong></td>
+                  <td><span class="badge badge-danger">Meat</span></td>
+                  <td>Daniel Ouma</td>
+                  <td>UGX 13,000</td>
+                  <td>40 kg</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" checked onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+                <tr>
+                  <td><strong>Sweet Mangoes</strong></td>
+                  <td><span class="badge badge-warning">Fruits</span></td>
+                  <td>Charles Odoi</td>
+                  <td>UGX 10,000</td>
+                  <td>0 dozen</td>
+                  <td><span class="badge badge-secondary">Inactive</span></td>
+                  <td><label class="toggle-switch"><input type="checkbox" onchange="toggleProduct(this)"><span class="toggle-slider"></span></label></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PAYMENTS PAGE ==================== -->
+      <div id="page-payments" class="admin-page hidden">
+        <div class="admin-stats-grid" style="grid-template-columns:repeat(4,1fr);">
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Total Revenue</span>
+              <div class="admin-stat-icon" style="background:rgba(76,175,80,0.15);color:var(--green-400);"><i class="fas fa-coins"></i></div>
+            </div>
+            <div class="admin-stat-value">UGX 142.5M</div>
+            <div class="admin-stat-change positive"><i class="fas fa-arrow-up"></i> +18%</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>PayPal (@LutwamaReagan)</span>
+              <div class="admin-stat-icon" style="background:rgba(25,118,210,0.15);color:#64B5F6;"><i class="fab fa-paypal"></i></div>
+            </div>
+            <div class="admin-stat-value">UGX 28.3M</div>
+            <div class="admin-stat-change positive">20% of total</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>Airtel Money</span>
+              <div class="admin-stat-icon" style="background:rgba(229,57,53,0.15);color:#EF5350;"><i class="fas fa-mobile-alt"></i></div>
+            </div>
+            <div class="admin-stat-value">UGX 52.1M</div>
+            <div class="admin-stat-change positive">37% of total</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-header">
+              <span>MTN Mobile Money</span>
+              <div class="admin-stat-icon" style="background:rgba(245,124,0,0.15);color:#FFB74D;"><i class="fas fa-mobile"></i></div>
+            </div>
+            <div class="admin-stat-value">UGX 45.7M</div>
+            <div class="admin-stat-change positive">32% of total</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-exchange-alt" style="color:var(--green-400);margin-right:8px;"></i>Recent Transactions</h3>
+            </div>
+            <div class="admin-card-body" style="padding:0;">
+              <table class="admin-table">
+                <thead><tr><th>ID</th><th>From</th><th>Method</th><th>Amount</th><th>Date</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>#TXN-1001</strong></td><td>Sarah Kimani</td><td><span class="badge badge-info">MTN MoMo</span></td><td>UGX 5,500</td><td style="font-size:0.8rem;color:#64748b;">2 hrs ago</td></tr>
+                  <tr><td><strong>#TXN-1000</strong></td><td>Michael Ouma</td><td><span class="badge badge-danger">Airtel</span></td><td>UGX 9,500</td><td style="font-size:0.8rem;color:#64748b;">5 hrs ago</td></tr>
+                  <tr><td><strong>#TXN-999</strong></td><td>Patricia N.</td><td><span class="badge badge-info">PayPal</span></td><td>UGX 30,000</td><td style="font-size:0.8rem;color:#64748b;">8 hrs ago</td></tr>
+                  <tr><td><strong>#TXN-998</strong></td><td>David Mwangi</td><td><span class="badge badge-secondary">Bank</span></td><td>UGX 22,500</td><td style="font-size:0.8rem;color:#64748b;">1 day ago</td></tr>
+                  <tr><td><strong>#TXN-997</strong></td><td>Jane Akello</td><td><span class="badge badge-info">MTN MoMo</span></td><td>UGX 5,000</td><td style="font-size:0.8rem;color:#64748b;">1 day ago</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-hand-holding-usd" style="color:var(--orange);margin-right:8px;"></i>Withdrawal Requests</h3>
+            </div>
+            <div class="admin-card-body" style="padding:0;">
+              <table class="admin-table">
+                <thead><tr><th>Farmer</th><th>Amount</th><th>Action</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>John Mukasa</td><td>UGX 450K</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Withdrawal approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Withdrawal declined','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Esther Nalubega</td><td>UGX 280K</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Withdrawal approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Withdrawal declined','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>David Kato</td><td>UGX 125K</td>
+                    <td class="actions">
+                      <button class="admin-btn admin-btn-sm admin-btn-success" onclick="showToast('Withdrawal approved!','success')"><i class="fas fa-check"></i></button>
+                      <button class="admin-btn admin-btn-sm admin-btn-danger" onclick="showToast('Withdrawal declined','error')"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Methods Config -->
+        <div class="admin-card" style="margin-top:24px;">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-cog" style="color:var(--green-400);margin-right:8px;"></i>Payment Methods Configuration</h3>
+          </div>
+          <div class="admin-card-body">
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(25,118,210,0.15);display:flex;align-items:center;justify-content:center;color:#64B5F6;"><i class="fab fa-paypal"></i></div>
+                  <div><strong>PayPal</strong><br><span style="font-size:0.8rem;color:#64748b;">@LutwamaReagan</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(229,57,53,0.15);display:flex;align-items:center;justify-content:center;color:#EF5350;"><i class="fas fa-mobile-alt"></i></div>
+                  <div><strong>Airtel Money</strong><br><span style="font-size:0.8rem;color:#64748b;">Available in all 4 countries</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(245,124,0,0.15);display:flex;align-items:center;justify-content:center;color:#FFB74D;"><i class="fas fa-mobile"></i></div>
+                  <div><strong>MTN Mobile Money</strong><br><span style="font-size:0.8rem;color:#64748b;">UG, RW, TZ</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(156,39,176,0.15);display:flex;align-items:center;justify-content:center;color:#CE93D8;"><i class="fas fa-university"></i></div>
+                  <div><strong>Bank Transfer</strong><br><span style="font-size:0.8rem;color:#64748b;">All major banks</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== ANALYTICS PAGE ==================== -->
+      <div id="page-analytics" class="admin-page hidden">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-chart-line" style="color:var(--green-400);margin-right:8px;"></i>Orders Trend (6 Months)</h3>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-chart-container">
+                <canvas id="ordersLineChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-chart-bar" style="color:var(--orange);margin-right:8px;"></i>Revenue by Country</h3>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-chart-container">
+                <canvas id="revenueBarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-trophy" style="color:#FFD54F;margin-right:8px;"></i>Top Performing Farmers</h3>
+            </div>
+            <div class="admin-card-body" style="padding:0;">
+              <table class="admin-table">
+                <thead><tr><th>Rank</th><th>Farmer</th><th>Orders</th><th>Revenue</th><th>Rating</th></tr></thead>
+                <tbody>
+                  <tr><td><span style="color:#FFD54F;font-weight:800;">1</span></td><td><strong>Esther Nalubega</strong></td><td>203</td><td>UGX 24.3M</td><td><i class="fas fa-star" style="color:#FFC107;"></i> 4.7</td></tr>
+                  <tr><td><span style="color:#C0C0C0;font-weight:800;">2</span></td><td><strong>John Mukasa</strong></td><td>156</td><td>UGX 18.2M</td><td><i class="fas fa-star" style="color:#FFC107;"></i> 4.8</td></tr>
+                  <tr><td><span style="color:#CD7F32;font-weight:800;">3</span></td><td><strong>David Kato</strong></td><td>112</td><td>UGX 15.8M</td><td><i class="fas fa-star" style="color:#FFC107;"></i> 4.8</td></tr>
+                  <tr><td>4</td><td><strong>Sarah Auma</strong></td><td>98</td><td>UGX 8.5M</td><td><i class="fas fa-star" style="color:#FFC107;"></i> 4.6</td></tr>
+                  <tr><td>5</td><td><strong>Patrick Ochieng</strong></td><td>87</td><td>UGX 12.1M</td><td><i class="fas fa-star" style="color:#FFC107;"></i> 4.9</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-pie-chart" style="color:var(--purple);margin-right:8px;"></i>Sales by Category</h3>
+            </div>
+            <div class="admin-card-body">
+              <div class="admin-chart-container" style="height:250px;">
+                <canvas id="categoryPieChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SETTINGS PAGE ==================== -->
+      <div id="page-settings" class="admin-page hidden">
+        <!-- Platform Fee -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-percentage" style="color:var(--green-400);margin-right:8px;"></i>Platform Fee Settings</h3>
+          </div>
+          <div class="admin-card-body">
+            <div style="max-width:500px;">
+              <label style="display:block;margin-bottom:8px;font-weight:600;">Platform Fee: <span id="fee-display" style="color:var(--green-400);font-size:1.3rem;">2.5%</span></label>
+              <input type="range" id="fee-slider" min="0" max="10" step="0.5" value="2.5" oninput="updateFeeDisplay(this.value)">
+              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748b;margin-top:4px;">
+                <span>0%</span><span>2.5%</span><span>5%</span><span>7.5%</span><span>10%</span>
+              </div>
+              <p style="font-size:0.85rem;color:#64748b;margin-top:12px;">Current fee generates approximately <strong style="color:var(--green-400);">UGX 3.56M</strong> per month in platform revenue.</p>
+              <button class="admin-btn admin-btn-primary" style="margin-top:16px;" onclick="showToast('Platform fee updated to ' + document.getElementById('fee-slider').value + '%', 'success')">
+                <i class="fas fa-save"></i> Save Fee Setting
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Country Settings -->
+        <div class="admin-card" style="margin-top:24px;">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-globe-africa" style="color:var(--blue);margin-right:8px;"></i>Country Settings</h3>
+          </div>
+          <div class="admin-card-body">
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="font-size:1.8rem;">&#127468;&#127463;</div>
+                  <div><strong>Uganda</strong><br><span style="font-size:0.8rem;color:#64748b;">111 districts &middot; 623 farmers</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="font-size:1.8rem;">&#127472;&#127466;</div>
+                  <div><strong>Kenya</strong><br><span style="font-size:0.8rem;color:#64748b;">47 counties &middot; 312 farmers</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="font-size:1.8rem;">&#127481;&#127487;</div>
+                  <div><strong>Tanzania</strong><br><span style="font-size:0.8rem;color:#64748b;">31 regions &middot; 198 farmers</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="font-size:1.8rem;">&#127479;&#127484;</div>
+                  <div><strong>Rwanda</strong><br><span style="font-size:0.8rem;color:#64748b;">30 districts &middot; 115 farmers</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method Toggles -->
+        <div class="admin-card" style="margin-top:24px;">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-credit-card" style="color:var(--orange);margin-right:8px;"></i>Payment Method Settings</h3>
+          </div>
+          <div class="admin-card-body">
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(25,118,210,0.15);display:flex;align-items:center;justify-content:center;color:#64B5F6;"><i class="fab fa-paypal"></i></div>
+                  <div><strong>PayPal</strong><br><span style="font-size:0.8rem;color:#64748b;">@LutwamaReagan &middot; 20% of payments</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(229,57,53,0.15);display:flex;align-items:center;justify-content:center;color:#EF5350;"><i class="fas fa-mobile-alt"></i></div>
+                  <div><strong>Airtel Money</strong><br><span style="font-size:0.8rem;color:#64748b;">37% of payments</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(245,124,0,0.15);display:flex;align-items:center;justify-content:center;color:#FFB74D;"><i class="fas fa-mobile"></i></div>
+                  <div><strong>MTN Mobile Money</strong><br><span style="font-size:0.8rem;color:#64748b;">32% of payments</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:#0f172a;border-radius:8px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:40px;height:40px;border-radius:8px;background:rgba(156,39,176,0.15);display:flex;align-items:center;justify-content:center;color:#CE93D8;"><i class="fas fa-university"></i></div>
+                  <div><strong>Bank Transfer</strong><br><span style="font-size:0.8rem;color:#64748b;">11% of payments</span></div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+            </div>
+            <button class="admin-btn admin-btn-primary" style="margin-top:20px;" onclick="showToast('Payment settings saved!', 'success')">
+              <i class="fas fa-save"></i> Save Payment Settings
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../app.js"></script>
+  <script>
+    // ===== PAGE NAVIGATION =====
+    function showPage(page) {
+      // Hide all pages
+      document.querySelectorAll('.admin-page').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`page-${page}`).classList.remove('hidden');
+
+      // Update sidebar
+      document.querySelectorAll('.admin-nav-item').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
+
+      // Update title
+      const titles = {
+        dashboard: '<i class="fas fa-tachometer-alt" style="color:var(--green-400);margin-right:10px;"></i>Dashboard Overview',
+        farmers: '<i class="fas fa-users" style="color:var(--green-400);margin-right:10px;"></i>Farmers Management',
+        orders: '<i class="fas fa-shopping-cart" style="color:var(--green-400);margin-right:10px;"></i>Orders Management',
+        products: '<i class="fas fa-box-open" style="color:var(--green-400);margin-right:10px;"></i>Products Management',
+        payments: '<i class="fas fa-wallet" style="color:var(--green-400);margin-right:10px;"></i>Payments',
+        analytics: '<i class="fas fa-chart-line" style="color:var(--green-400);margin-right:10px;"></i>Analytics',
+        settings: '<i class="fas fa-cog" style="color:var(--green-400);margin-right:10px;"></i>Settings'
+      };
+      document.getElementById('page-title').innerHTML = titles[page] || 'Dashboard';
+
+      // Initialize charts if needed
+      if (page === 'dashboard') initDashboardChart();
+      if (page === 'analytics') initAnalyticsCharts();
+    }
+
+    // ===== DASHBOARD CHART =====
+    let dashboardChart = null;
+    function initDashboardChart() {
+      if (dashboardChart) return;
+      const ctx = document.getElementById('dashboardRevenueChart');
+      if (!ctx) return;
+      dashboardChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue (UGX Millions)',
+            data: [85, 92, 108, 118, 135, 142.5],
+            borderColor: '#4CAF50',
+            backgroundColor: 'rgba(76,175,80,0.1)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#4CAF50',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+            y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+    }
+
+    // ===== ANALYTICS CHARTS =====
+    let analyticsCharts = {};
+    function initAnalyticsCharts() {
+      // Line chart - Orders
+      if (!analyticsCharts.orders) {
+        const ctx1 = document.getElementById('ordersLineChart');
+        if (ctx1) {
+          analyticsCharts.orders = new Chart(ctx1, {
+            type: 'line',
+            data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+              datasets: [{
+                label: 'Orders',
+                data: [420, 485, 560, 610, 720, 847],
+                borderColor: '#4CAF50',
+                backgroundColor: 'rgba(76,175,80,0.1)',
+                fill: true,
+                tension: 0.4
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+                y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+              }
+            }
+          });
+        }
+      }
+
+      // Bar chart - Revenue by country
+      if (!analyticsCharts.revenue) {
+        const ctx2 = document.getElementById('revenueBarChart');
+        if (ctx2) {
+          analyticsCharts.revenue = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+              labels: ['Uganda', 'Kenya', 'Tanzania', 'Rwanda'],
+              datasets: [{
+                label: 'Revenue (UGX Millions)',
+                data: [85.4, 32.1, 16.8, 8.2],
+                backgroundColor: ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0'],
+                borderRadius: 6
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+                y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+              }
+            }
+          });
+        }
+      }
+
+      // Pie chart - Category breakdown
+      if (!analyticsCharts.category) {
+        const ctx3 = document.getElementById('categoryPieChart');
+        if (ctx3) {
+          analyticsCharts.category = new Chart(ctx3, {
+            type: 'doughnut',
+            data: {
+              labels: ['Vegetables', 'Fruits', 'Grains', 'Dairy', 'Meat', 'Spices', 'Tubers'],
+              datasets: [{
+                data: [28, 22, 18, 12, 10, 5, 5],
+                backgroundColor: ['#4CAF50', '#FF9800', '#8D6E63', '#90CAF9', '#EF5350', '#FFB74D', '#BCAAA4'],
+                borderWidth: 0
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 15, font: { size: 11 } } }
+              }
+            }
+          });
+        }
+      }
+    }
+
+    // ===== FARMER FILTERS =====
+    function filterFarmers() {
+      const search = document.getElementById('farmer-search').value.toLowerCase();
+      const filter = document.getElementById('farmer-filter').value;
+      const rows = document.querySelectorAll('#farmers-table tbody tr');
+      let count = 0;
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const status = row.dataset.status;
+        const matchSearch = !search || text.includes(search);
+        const matchFilter = filter === 'all' || status === filter;
+
+        if (matchSearch && matchFilter) {
+          row.style.display = '';
+          count++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      document.getElementById('farmer-count').textContent = count;
+    }
+
+    // ===== ORDER FILTERS =====
+    function filterOrders(status, btn) {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const rows = document.querySelectorAll('#orders-table tbody tr');
+      rows.forEach(row => {
+        if (status === 'all' || row.dataset.status === status) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function filterOrderSearch(input) {
+      const search = input.value.toLowerCase();
+      const activeTab = document.querySelector('.admin-tab.active');
+      const activeFilter = activeTab ? activeTab.textContent.toLowerCase().replace(' orders', '').replace('all', 'all') : 'all';
+      const rows = document.querySelectorAll('#orders-table tbody tr');
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const status = row.dataset.status;
+        const matchSearch = !search || text.includes(search);
+        const matchFilter = activeFilter === 'all orders' || status === activeFilter.replace(' ', '');
+
+        if (matchSearch && matchFilter) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // ===== PRODUCT TOGGLE =====
+    function toggleProduct(checkbox) {
+      const row = checkbox.closest('tr');
+      const badge = row.querySelector('.badge');
+      if (checkbox.checked) {
+        badge.className = 'badge badge-success';
+        badge.textContent = 'Active';
+        showToast('Product activated', 'success');
+      } else {
+        badge.className = 'badge badge-secondary';
+        badge.textContent = 'Inactive';
+        showToast('Product deactivated', 'warning');
+      }
+    }
+
+    // ===== FEE SLIDER =====
+    function updateFeeDisplay(val) {
+      document.getElementById('fee-display').textContent = val + '%';
+    }
+
+    // ===== INIT =====
+    document.addEventListener('DOMContentLoaded', () => {
+      initDashboardChart();
+    });
+  </script>
+</body>
+</html>

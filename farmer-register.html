@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as Farmer - ShambaNi Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="./index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+        ShambaNi
+      </a>
+      <div class="nav-links">
+        <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="./browse.html"><i class="fas fa-search"></i> Browse</a>
+        <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD</a>
+        <a href="./about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="./farmer-register.html" class="active"><i class="fas fa-tractor"></i> Sell</a>
+        <a href="./admin/index.html" class="admin-link"><i class="fas fa-cog"></i> Admin</a>
+        <a href="./cart.html" id="nav-cart-btn" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+      </div>
+      <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <span class="flag-icon">&#127468;&#127463;</span>
+            <span class="lang-code">EN</span>
+            <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+          </button>
+          <div class="lang-dropdown">
+            <button data-lang="en"><span class="flag-icon">&#127468;&#127463;</span> English</button>
+            <button data-lang="sw"><span class="flag-icon">&#127472;&#127466;</span> Kiswahili</button>
+            <button data-lang="rw"><span class="flag-icon">&#127479;&#127484;</span> Runyarwanda</button>
+            <button data-lang="lg"><span class="flag-icon">&#127482;&#127468;</span> Luganda</button>
+          </div>
+        </div>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./browse.html"><i class="fas fa-search"></i> Browse Produce</a>
+    <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+    <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD *220#</a>
+    <a href="./about.html"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="./farmer-register.html" class="active"><i class="fas fa-tractor"></i> Sell as Farmer</a>
+    <a href="./admin/index.html"><i class="fas fa-cog"></i> Admin Dashboard</a>
+  </div>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container">
+        <h1><i class="fas fa-tractor" style="color:var(--green-500)"></i> Register as a Farmer</h1>
+        <p>Join thousands of farmers selling directly to buyers across East Africa</p>
+      </div>
+    </div>
+
+    <!-- Wizard -->
+    <section class="section">
+      <div class="container">
+        <div class="wizard">
+          <!-- Progress Steps -->
+          <div class="wizard-progress">
+            <div class="wizard-step active" data-step="1">
+              <div class="wizard-step-number">1</div>
+              <span class="wizard-step-label">Personal Info</span>
+            </div>
+            <div class="wizard-step" data-step="2">
+              <div class="wizard-step-number">2</div>
+              <span class="wizard-step-label">Farm Details</span>
+            </div>
+            <div class="wizard-step" data-step="3">
+              <div class="wizard-step-number">3</div>
+              <span class="wizard-step-label">Payment</span>
+            </div>
+            <div class="wizard-step" data-step="4">
+              <div class="wizard-step-number">4</div>
+              <span class="wizard-step-label">Review</span>
+            </div>
+          </div>
+
+          <!-- Step 1: Personal Info -->
+          <div class="wizard-content" id="step-1">
+            <h3 style="color:var(--green-900);margin-bottom:20px;"><i class="fas fa-user" style="margin-right:8px;"></i>Personal Information</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" id="f-firstname" placeholder="e.g. John">
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" id="f-lastname" placeholder="e.g. Mukasa">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="f-email" placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="f-phone" placeholder="+256 700 123 456">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Country *</label>
+                <select id="f-country">
+                  <option value="">Select Country</option>
+                  <option value="ug">Uganda</option>
+                  <option value="ke">Kenya</option>
+                  <option value="tz">Tanzania</option>
+                  <option value="rw">Rwanda</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>District/County *</label>
+                <input type="text" id="f-district" placeholder="e.g. Mukono">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Village/Parish</label>
+              <input type="text" id="f-village" placeholder="e.g. Nakifuma">
+            </div>
+            <div class="form-group">
+              <label>National ID Number *</label>
+              <input type="text" id="f-nin" placeholder="e.g. CM1234567890AB">
+            </div>
+          </div>
+
+          <!-- Step 2: Farm Details -->
+          <div class="wizard-content hidden" id="step-2">
+            <h3 style="color:var(--green-900);margin-bottom:20px;"><i class="fas fa-tractor" style="margin-right:8px;"></i>Farm Details</h3>
+            <div class="form-group">
+              <label>Farm Name *</label>
+              <input type="text" id="f-farmname" placeholder="e.g. Mukasa Organic Farms">
+            </div>
+            <div class="form-group">
+              <label>Farm Size (Acres)</label>
+              <input type="number" id="f-farmsize" placeholder="e.g. 5" min="0" step="0.5">
+            </div>
+            <div class="form-group">
+              <label>What do you grow/sell? *</label>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px;">
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Vegetables"> Vegetables</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Fruits"> Fruits</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Grains"> Grains & Cereals</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Dairy"> Dairy & Eggs</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Meat"> Meat & Poultry</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Spices"> Spices & Herbs</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Tubers"> Roots & Tubers</label>
+                <label style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--cream);border-radius:8px;cursor:pointer;"><input type="checkbox" class="f-produce" value="Other"> Other</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Farm Description</label>
+              <textarea id="f-description" placeholder="Tell buyers about your farm, farming practices, and what makes your produce special..."></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Years of Experience</label>
+                <select id="f-experience">
+                  <option value="">Select</option>
+                  <option value="0-1">Less than 1 year</option>
+                  <option value="1-3">1-3 years</option>
+                  <option value="3-5">3-5 years</option>
+                  <option value="5-10">5-10 years</option>
+                  <option value="10+">Over 10 years</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Organic Certified?</label>
+                <select id="f-organic">
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="transition">In Transition</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Payment Setup -->
+          <div class="wizard-content hidden" id="step-3">
+            <h3 style="color:var(--green-900);margin-bottom:20px;"><i class="fas fa-credit-card" style="margin-right:8px;"></i>Payment Setup</h3>
+            <p style="color:var(--text-secondary);margin-bottom:20px;font-size:0.9rem;">Choose how you want to receive payments from buyers. You can select multiple methods.</p>
+
+            <div style="background:var(--green-50);border-radius:12px;padding:20px;margin-bottom:24px;">
+              <h4 style="font-size:1rem;margin-bottom:16px;color:var(--green-900);"><i class="fas fa-mobile-alt" style="margin-right:6px;"></i>Mobile Money</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>MTN Mobile Money Number</label>
+                  <input type="tel" id="f-mtn" placeholder="+256 77X XXX XXX">
+                </div>
+                <div class="form-group">
+                  <label>Airtel Money Number</label>
+                  <input type="tel" id="f-airtel" placeholder="+256 70X XXX XXX">
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--blue-light);border-radius:12px;padding:20px;margin-bottom:24px;">
+              <h4 style="font-size:1rem;margin-bottom:16px;color:var(--blue);"><i class="fab fa-paypal" style="margin-right:6px;"></i>PayPal</h4>
+              <div class="form-group">
+                <label>PayPal Email / Username</label>
+                <input type="text" id="f-paypal" placeholder="e.g. LutwamaReagan">
+                <p style="font-size:0.8rem;color:var(--text-muted);margin-top:6px;">Your PayPal username for receiving international payments.</p>
+              </div>
+            </div>
+
+            <div style="background:var(--purple-light);border-radius:12px;padding:20px;margin-bottom:24px;">
+              <h4 style="font-size:1rem;margin-bottom:16px;color:var(--purple);"><i class="fas fa-university" style="margin-right:6px;"></i>Bank Transfer</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Bank Name</label>
+                  <input type="text" id="f-bankname" placeholder="e.g. Stanbic Bank">
+                </div>
+                <div class="form-group">
+                  <label>Account Number</label>
+                  <input type="text" id="f-bankaccount" placeholder="e.g. 9030001234567">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Account Name</label>
+                <input type="text" id="f-bankholder" placeholder="Full name as on bank account">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <input type="checkbox" id="f-terms" style="width:20px;height:20px;accent-color:var(--green-500);">
+                <span>I agree to the <a href="#" style="color:var(--green-600);font-weight:600;">Terms of Service</a> and <a href="#" style="color:var(--green-600);font-weight:600;">Seller Agreement</a> *</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Review -->
+          <div class="wizard-content hidden" id="step-4">
+            <h3 style="color:var(--green-900);margin-bottom:20px;"><i class="fas fa-check-circle" style="margin-right:8px;"></i>Review Your Application</h3>
+            <p style="color:var(--text-secondary);margin-bottom:24px;">Please review your information before submitting. Our team will verify your application within 24-48 hours.</p>
+
+            <div style="background:var(--cream);border-radius:12px;padding:24px;margin-bottom:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h4 style="color:var(--green-900);">Personal Information</h4>
+                <button onclick="goToStep(1)" class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-edit"></i> Edit</button>
+              </div>
+              <div id="review-personal" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.9rem;">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <div style="background:var(--cream);border-radius:12px;padding:24px;margin-bottom:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h4 style="color:var(--green-900);">Farm Details</h4>
+                <button onclick="goToStep(2)" class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-edit"></i> Edit</button>
+              </div>
+              <div id="review-farm" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.9rem;">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <div style="background:var(--cream);border-radius:12px;padding:24px;margin-bottom:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h4 style="color:var(--green-900);">Payment Methods</h4>
+                <button onclick="goToStep(3)" class="admin-btn admin-btn-sm admin-btn-secondary"><i class="fas fa-edit"></i> Edit</button>
+              </div>
+              <div id="review-payment" style="font-size:0.9rem;">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <div style="background:var(--green-50);border-radius:12px;padding:20px;text-align:center;">
+              <i class="fas fa-info-circle" style="color:var(--green-500);font-size:1.5rem;margin-bottom:8px;"></i>
+              <p style="font-size:0.9rem;color:var(--text-secondary);">By submitting, you agree that all information provided is accurate. Our team will verify your details and activate your seller account within <strong>24-48 hours</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Wizard Buttons -->
+          <div class="wizard-buttons" id="wizard-buttons">
+            <button class="btn btn-outline" id="btn-prev" onclick="prevStep()" style="visibility:hidden;"><i class="fas fa-arrow-left"></i> Previous</button>
+            <button class="btn btn-primary" id="btn-next" onclick="nextStep()">Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="logo"><div class="logo-icon"><i class="fas fa-leaf"></i></div>ShambaNi</a>
+          <p>Connecting farmers to buyers across East Africa.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./browse.html">Browse Produce</a>
+          <a href="./farmer-register.html">Register as Farmer</a>
+          <a href="./ussd.html">USSD *220#</a>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="./about.html">FAQ</a>
+          <a href="./about.html">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:info@shambani.com"><i class="fas fa-envelope" style="margin-right:6px;"></i>info@shambani.com</a>
+          <a href="tel:+256700123456"><i class="fas fa-phone" style="margin-right:6px;"></i>+256 700 123 456</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShambaNi Marketplace. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="./app.js"></script>
+  <script>
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    function updateSteps() {
+      // Update progress indicators
+      document.querySelectorAll('.wizard-step').forEach((step, idx) => {
+        const stepNum = idx + 1;
+        step.classList.remove('active', 'completed');
+        if (stepNum < currentStep) step.classList.add('completed');
+        else if (stepNum === currentStep) step.classList.add('active');
+        // Update number content for completed steps
+        const numEl = step.querySelector('.wizard-step-number');
+        if (stepNum < currentStep) numEl.innerHTML = '<i class="fas fa-check"></i>';
+        else numEl.textContent = stepNum;
+      });
+
+      // Show/hide step content
+      for (let i = 1; i <= totalSteps; i++) {
+        document.getElementById(`step-${i}`).classList.toggle('hidden', i !== currentStep);
+      }
+
+      // Update buttons
+      const prevBtn = document.getElementById('btn-prev');
+      const nextBtn = document.getElementById('btn-next');
+      prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+
+      if (currentStep === totalSteps) {
+        nextBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+        populateReview();
+      } else {
+        nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+      }
+    }
+
+    function validateStep(step) {
+      if (step === 1) {
+        if (!document.getElementById('f-firstname').value) { showToast('Please enter your first name', 'error'); return false; }
+        if (!document.getElementById('f-lastname').value) { showToast('Please enter your last name', 'error'); return false; }
+        if (!document.getElementById('f-phone').value) { showToast('Please enter your phone number', 'error'); return false; }
+        if (!document.getElementById('f-country').value) { showToast('Please select your country', 'error'); return false; }
+        if (!document.getElementById('f-district').value) { showToast('Please enter your district', 'error'); return false; }
+        if (!document.getElementById('f-nin').value) { showToast('Please enter your National ID', 'error'); return false; }
+      }
+      if (step === 2) {
+        if (!document.getElementById('f-farmname').value) { showToast('Please enter your farm name', 'error'); return false; }
+        const checked = document.querySelectorAll('.f-produce:checked');
+        if (checked.length === 0) { showToast('Please select at least one produce type', 'error'); return false; }
+      }
+      if (step === 3) {
+        if (!document.getElementById('f-terms').checked) { showToast('Please agree to the Terms of Service', 'error'); return false; }
+      }
+      return true;
+    }
+
+    function nextStep() {
+      if (currentStep === totalSteps) {
+        // Submit
+        showToast('Application submitted successfully! We will review and get back to you within 24-48 hours.', 'success');
+        setTimeout(() => { window.location.href = './index.html'; }, 3000);
+        return;
+      }
+      if (!validateStep(currentStep)) return;
+      currentStep++;
+      updateSteps();
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+      }
+    }
+
+    function goToStep(step) {
+      currentStep = step;
+      updateSteps();
+    }
+
+    function populateReview() {
+      const countryMap = { ug: 'Uganda', ke: 'Kenya', tz: 'Tanzania', rw: 'Rwanda' };
+      const personal = document.getElementById('review-personal');
+      const farm = document.getElementById('review-farm');
+      const payment = document.getElementById('review-payment');
+
+      const produceTypes = Array.from(document.querySelectorAll('.f-produce:checked')).map(c => c.value).join(', ');
+
+      personal.innerHTML = `
+        <div><strong style="color:var(--text-muted);font-weight:500;">Name:</strong> ${document.getElementById('f-firstname').value} ${document.getElementById('f-lastname').value}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Phone:</strong> ${document.getElementById('f-phone').value}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Email:</strong> ${document.getElementById('f-email').value || 'N/A'}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Country:</strong> ${countryMap[document.getElementById('f-country').value] || ''}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">District:</strong> ${document.getElementById('f-district').value}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">National ID:</strong> ${document.getElementById('f-nin').value}</div>
+      `;
+
+      farm.innerHTML = `
+        <div><strong style="color:var(--text-muted);font-weight:500;">Farm Name:</strong> ${document.getElementById('f-farmname').value}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Farm Size:</strong> ${document.getElementById('f-farmsize').value || 'N/A'} acres</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Produce:</strong> ${produceTypes}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Experience:</strong> ${document.getElementById('f-experience').value || 'N/A'}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Organic:</strong> ${document.getElementById('f-organic').value}</div>
+        <div><strong style="color:var(--text-muted);font-weight:500;">Description:</strong> ${document.getElementById('f-description').value || 'N/A'}</div>
+      `;
+
+      let paymentHtml = '';
+      const mtn = document.getElementById('f-mtn').value;
+      const airtel = document.getElementById('f-airtel').value;
+      const paypal = document.getElementById('f-paypal').value;
+      const bankName = document.getElementById('f-bankname').value;
+      const bankAcct = document.getElementById('f-bankaccount').value;
+
+      if (mtn) paymentHtml += `<div style="padding:8px 0;border-bottom:1px solid var(--cream-dark);"><i class="fas fa-mobile" style="color:var(--orange);margin-right:8px;"></i><strong>MTN:</strong> ${mtn}</div>`;
+      if (airtel) paymentHtml += `<div style="padding:8px 0;border-bottom:1px solid var(--cream-dark);"><i class="fas fa-mobile-alt" style="color:var(--red);margin-right:8px;"></i><strong>Airtel:</strong> ${airtel}</div>`;
+      if (paypal) paymentHtml += `<div style="padding:8px 0;border-bottom:1px solid var(--cream-dark);"><i class="fab fa-paypal" style="color:var(--blue);margin-right:8px;"></i><strong>PayPal:</strong> ${paypal}</div>`;
+      if (bankName && bankAcct) paymentHtml += `<div style="padding:8px 0;"><i class="fas fa-university" style="color:var(--purple);margin-right:8px;"></i><strong>Bank:</strong> ${bankName} - ${bankAcct}</div>`;
+      if (!paymentHtml) paymentHtml = '<p style="color:var(--text-muted);">No payment methods configured yet.</p>';
+
+      payment.innerHTML = paymentHtml;
+    }
+
+    updateSteps();
+  </script>
+</body>
+</html>

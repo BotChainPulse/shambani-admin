@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USSD *220# - ShambaNi Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="./index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+        ShambaNi
+      </a>
+      <div class="nav-links">
+        <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="./browse.html"><i class="fas fa-search"></i> Browse</a>
+        <a href="./ussd.html" class="active"><i class="fas fa-mobile-alt"></i> USSD</a>
+        <a href="./about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell</a>
+        <a href="./admin/index.html" class="admin-link"><i class="fas fa-cog"></i> Admin</a>
+        <a href="./cart.html" id="nav-cart-btn" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+      </div>
+      <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <span class="flag-icon">&#127468;&#127463;</span>
+            <span class="lang-code">EN</span>
+            <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+          </button>
+          <div class="lang-dropdown">
+            <button data-lang="en"><span class="flag-icon">&#127468;&#127463;</span> English</button>
+            <button data-lang="sw"><span class="flag-icon">&#127472;&#127466;</span> Kiswahili</button>
+            <button data-lang="rw"><span class="flag-icon">&#127479;&#127484;</span> Runyarwanda</button>
+            <button data-lang="lg"><span class="flag-icon">&#127482;&#127468;</span> Luganda</button>
+          </div>
+        </div>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./browse.html"><i class="fas fa-search"></i> Browse Produce</a>
+    <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+    <a href="./ussd.html" class="active"><i class="fas fa-mobile-alt"></i> USSD *220#</a>
+    <a href="./about.html"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell as Farmer</a>
+    <a href="./admin/index.html"><i class="fas fa-cog"></i> Admin Dashboard</a>
+  </div>
+
+  <div class="page-content">
+    <!-- Hero Section -->
+    <section class="ussd-section" style="padding-top:140px;">
+      <div class="container">
+        <div class="ussd-grid">
+          <div class="ussd-content">
+            <div class="hero-badge" style="margin-bottom:20px;display:inline-flex;">
+              <i class="fas fa-mobile-alt" style="color:var(--green-500)"></i>
+              Works on Any Phone
+            </div>
+            <h2 style="font-size:2.8rem;">Dial <span>*220#</span></h2>
+            <p style="font-size:1.1rem;">Access ShambaNi from any mobile phone - no internet required! Buy fresh produce, sell your harvest, check prices, and manage orders all through a simple USSD menu.</p>
+            <div class="ussd-features">
+              <div class="ussd-feature"><i class="fas fa-check"></i> Works on any mobile phone (feature phones too)</div>
+              <div class="ussd-feature"><i class="fas fa-check"></i> No internet or smartphone required</div>
+              <div class="ussd-feature"><i class="fas fa-check"></i> Available in English, Kiswahili, Runyarwanda & Luganda</div>
+              <div class="ussd-feature"><i class="fas fa-check"></i> Secure payments via Mobile Money</div>
+              <div class="ussd-feature"><i class="fas fa-check"></i> Available 24/7 across all networks</div>
+              <div class="ussd-feature"><i class="fas fa-check"></i> Low cost - standard USSD rates apply</div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="tel:*220%23" class="btn btn-orange btn-lg"><i class="fas fa-phone"></i> Dial *220# Now</a>
+              <a href="#how-it-works" class="btn btn-outline" style="background:rgba(255,255,255,0.1);color:white;border-color:rgba(255,255,255,0.3);"><i class="fas fa-info-circle"></i> How It Works</a>
+            </div>
+          </div>
+          <div>
+            <!-- Interactive Phone Simulator -->
+            <div class="phone-mockup" style="max-width:320px;margin:0 auto;">
+              <div class="phone-screen" style="min-height:480px;" id="phone-simulator">
+                <div style="position:absolute;top:12px;left:0;right:0;text-align:center;font-size:0.7rem;color:#64748b;">
+                  <i class="fas fa-signal"></i> <span id="sim-network">MTN</span> <i class="fas fa-wifi" style="margin-left:8px;"></i> <i class="fas fa-battery-full" style="margin-left:8px;"></i>
+                </div>
+                <div id="sim-content" style="width:100%;margin-top:20px;">
+                  <h4 style="color:var(--green-400);font-size:1.6rem;margin-bottom:4px;">*220#</h4>
+                  <p style="font-size:0.75rem;color:#64748b;margin-bottom:16px;">ShambaNi Marketplace</p>
+                  <div class="ussd-menu" style="margin-bottom:16px;">
+                    <div class="ussd-menu-item" style="font-weight:600;color:white;border-bottom:1px solid #334155;padding-bottom:10px;margin-bottom:6px;">Main Menu</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('buy')">1. Buy Produce</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('sell')">2. Sell Produce</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('prices')">3. Check Prices</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('orders')">4. My Orders</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('register')">5. Register as Farmer</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('help')">6. Help & Support</div>
+                    <div class="ussd-menu-item" onclick="simNavigate('exit')">0. Exit</div>
+                  </div>
+                </div>
+                <div style="width:100%;margin-top:auto;">
+                  <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;margin-bottom:12px;">
+                    <span style="font-size:0.7rem;color:#64748b;">Input:</span>
+                    <input type="text" id="sim-input" style="flex:1;background:transparent;border:none;color:white;font-family:'Courier New',monospace;font-size:0.9rem;outline:none;" placeholder="Enter number..." readonly>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;">
+                    <button onclick="simKey('1')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">1</button>
+                    <button onclick="simKey('2')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">2</button>
+                    <button onclick="simKey('3')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">3</button>
+                    <button onclick="simKey('4')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">4</button>
+                    <button onclick="simKey('5')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">5</button>
+                    <button onclick="simKey('6')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">6</button>
+                    <button onclick="simKey('7')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">7</button>
+                    <button onclick="simKey('8')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">8</button>
+                    <button onclick="simKey('9')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">9</button>
+                    <button onclick="simBack()" style="padding:10px;background:#475569;border-radius:8px;color:white;font-size:0.8rem;"><i class="fas fa-arrow-left"></i></button>
+                    <button onclick="simKey('0')" style="padding:10px;background:#334155;border-radius:8px;color:white;font-weight:700;font-size:1rem;">0</button>
+                    <button onclick="simEnter()" style="padding:10px;background:var(--green-600);border-radius:8px;color:white;font-size:0.8rem;"><i class="fas fa-check"></i></button>
+                  </div>
+                  <div class="phone-btn" style="margin:0 auto;"><i class="fas fa-phone"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>How USSD *220# Works</h2>
+          <p>Simple steps to access ShambaNi from any phone</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4><i class="fas fa-phone-alt" style="color:var(--green-500);margin-right:8px;"></i>Dial *220#</h4>
+            <p>Open your phone's dialer and enter *220#, then press call. This works on MTN, Airtel, and all other networks across East Africa.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4><i class="fas fa-list" style="color:var(--green-500);margin-right:8px;"></i>Select an Option</h4>
+            <p>Choose from the menu - buy produce, sell your harvest, check market prices, or track your orders. Enter the corresponding number.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4><i class="fas fa-check-circle" style="color:var(--green-500);margin-right:8px;"></i>Complete Your Transaction</h4>
+            <p>Follow the prompts to complete your purchase or sale. Pay securely via Mobile Money. Receive confirmation SMS instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Flow -->
+    <section class="section" style="background:var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <h2>USSD Menu Flow</h2>
+          <p>Complete menu structure for *220#</p>
+        </div>
+        <div style="max-width:700px;margin:0 auto;">
+          <div style="background:var(--cream);border-radius:16px;padding:30px;border:2px solid var(--green-100);">
+            <div style="text-align:center;margin-bottom:24px;">
+              <span style="display:inline-block;padding:10px 24px;background:var(--green-500);color:white;border-radius:50px;font-weight:700;font-family:'Courier New',monospace;font-size:1.2rem;">*220#</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:8px;border-left:4px solid var(--green-500);">
+                <span style="font-weight:700;color:var(--green-600);min-width:24px;">1.</span>
+                <div>
+                  <span style="font-weight:600;">Buy Produce</span>
+                  <span style="color:var(--text-muted);font-size:0.85rem;display:block;">Browse categories, select items, place order</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:8px;border-left:4px solid var(--blue);">
+                <span style="font-weight:700;color:var(--blue);min-width:24px;">2.</span>
+                <div>
+                  <span style="font-weight:600;">Sell Produce</span>
+                  <span style="color:var(--text-muted);font-size:0.85rem;display:block;">List your harvest, set prices, manage listings</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:8px;border-left:4px solid var(--orange);">
+                <span style="font-weight:700;color:var(--orange);min-width:24px;">3.</span>
+                <div>
+                  <span style="font-weight:600;">Check Prices</span>
+                  <span style="color:var(--text-muted);font-size:0.85rem;display:block;">View current market prices for all produce</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:8px;border-left:4px solid var(--purple);">
+                <span style="font-weight:700;color:var(--purple);min-width:24px;">4.</span>
+                <div>
+                  <span style="font-weight:600;">My Orders</span>
+                  <span style="color:var(--text-muted);font-size:0.85rem;display:block;">Track orders, view history, manage deliveries</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:8px;border-left:4px solid var(--teal);">
+                <span style="font-weight:700;color:var(--teal);min-width:24px;">5.</span>
+                <div>
+                  <span style="font-weight:600;">Register as Farmer</span>
+                  <span style="color:var(--text-muted);font-size:0.85rem;display:block;">Join ShambaNi as a seller in minutes</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:8px;border-left:4px solid var(--text-muted);">
+                <span style="font-weight:700;color:var(--text-muted);min-width:24px;">6.</span>
+                <div>
+                  <span style="font-weight:600;">Help & Support</span>
+                  <span style="color:var(--text-muted);font-size:0.85rem;display:block;">FAQs, contact support, report issues</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>Common questions about our USSD service</p>
+        </div>
+        <div style="max-width:700px;margin:0 auto;">
+          <div class="accordion-item open">
+            <div class="accordion-header">
+              <span>Does USSD *220# work on any phone?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>Yes! USSD *220# works on any mobile phone - from the latest smartphones to basic feature phones. All you need is a mobile network connection. No internet or data plan is required.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>How much does it cost to use *220#?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>You only pay standard USSD rates charged by your network provider (typically UGX 20-50 per session). ShambaNi does not charge any additional fees for USSD access.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>Which mobile networks are supported?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>ShambaNi USSD works on all major networks across East Africa including MTN Uganda, Airtel Uganda, MTN Rwanda, Airtel Rwanda, Safaricom Kenya, Airtel Kenya, Vodacom Tanzania, Airtel Tanzania, and more.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>Can I pay using Mobile Money through USSD?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>Yes! When you place an order through *220#, you'll receive a Mobile Money payment prompt on your phone. You can pay using MTN Mobile Money or Airtel Money directly from the USSD session.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>Is the USSD service available in my language?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>Yes! ShambaNi USSD is available in 4 languages: English, Kiswahili, Runyarwanda, and Luganda. You can select your preferred language from the main menu or settings.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>How do I register as a farmer using USSD?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>Select option 5 "Register as Farmer" from the main menu. Follow the prompts to enter your name, phone number, district, and farm details. Registration takes less than 2 minutes!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage -->
+    <section class="section" style="background:var(--white);">
+      <div class="container" style="text-align:center;">
+        <h2 style="color:var(--green-900);margin-bottom:30px;">Available Across East Africa</h2>
+        <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:8px;">&#127468;&#127463;</div>
+            <p style="font-weight:600;">Uganda</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);">MTN, Airtel</p>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:8px;">&#127472;&#127466;</div>
+            <p style="font-weight:600;">Kenya</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Safaricom, Airtel</p>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:8px;">&#127481;&#127487;</div>
+            <p style="font-weight:600;">Tanzania</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Vodacom, Airtel</p>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:8px;">&#127479;&#127484;</div>
+            <p style="font-weight:600;">Rwanda</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);">MTN, Airtel</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+            ShambaNi
+          </a>
+          <p>Connecting farmers to buyers across East Africa.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./browse.html">Browse Produce</a>
+          <a href="./farmer-register.html">Register as Farmer</a>
+          <a href="./ussd.html">USSD *220#</a>
+          <a href="./about.html">About Us</a>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="./ussd.html">FAQ</a>
+          <a href="./about.html">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:info@shambani.com"><i class="fas fa-envelope" style="margin-right:6px;"></i>info@shambani.com</a>
+          <a href="tel:+256700123456"><i class="fas fa-phone" style="margin-right:6px;"></i>+256 700 123 456</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShambaNi Marketplace. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="./app.js"></script>
+  <script>
+    // Phone Simulator Logic
+    const simScreens = {
+      main: {
+        title: '*220#',
+        subtitle: 'ShambaNi Marketplace',
+        items: [
+          { text: '1. Buy Produce', action: 'buy' },
+          { text: '2. Sell Produce', action: 'sell' },
+          { text: '3. Check Prices', action: 'prices' },
+          { text: '4. My Orders', action: 'orders' },
+          { text: '5. Register as Farmer', action: 'register' },
+          { text: '6. Help & Support', action: 'help' },
+          { text: '0. Exit', action: 'exit' }
+        ]
+      },
+      buy: {
+        title: 'Buy Produce',
+        subtitle: 'Select Category',
+        items: [
+          { text: '1. Vegetables', action: '' },
+          { text: '2. Fruits', action: '' },
+          { text: '3. Grains', action: '' },
+          { text: '4. Dairy & Eggs', action: '' },
+          { text: '5. Meat & Fish', action: '' },
+          { text: '#. Back', action: 'back' }
+        ]
+      },
+      prices: {
+        title: 'Market Prices',
+        subtitle: 'Today\'s Prices',
+        items: [
+          { text: 'Tomatoes: UGX 3,500/box', action: '' },
+          { text: 'Bananas: UGX 7,000/bunch', action: '' },
+          { text: 'Eggs: UGX 12,000/tray', action: '' },
+          { text: 'Milk: UGX 2,500/L', action: '' },
+          { text: '#. Back', action: 'back' }
+        ]
+      },
+      orders: {
+        title: 'My Orders',
+        subtitle: 'Active Orders',
+        items: [
+          { text: 'Order #1234 - Delivered', action: '' },
+          { text: 'Order #1235 - In Transit', action: '' },
+          { text: 'Order #1236 - Processing', action: '' },
+          { text: '#. Back', action: 'back' }
+        ]
+      },
+      help: {
+        title: 'Help & Support',
+        subtitle: 'How can we help?',
+        items: [
+          { text: '1. How to Buy', action: '' },
+          { text: '2. How to Sell', action: '' },
+          { text: '3. Payment Issues', action: '' },
+          { text: '4. Contact Support', action: '' },
+          { text: '#. Back', action: 'back' }
+        ]
+      },
+      exit: {
+        title: 'Goodbye!',
+        subtitle: 'Thank you for using ShambaNi',
+        items: [
+          { text: 'Dial *220# anytime to return', action: '' }
+        ]
+      }
+    };
+
+    let simHistory = [];
+    let simCurrent = 'main';
+
+    function renderSim() {
+      const screen = simScreens[simCurrent] || simScreens.main;
+      const content = document.getElementById('sim-content');
+      const itemsHtml = screen.items.map(item => {
+        if (item.action === 'back') {
+          return `<div class="ussd-menu-item" onclick="simBack()" style="color:#FFB74D;">${item.text}</div>`;
+        }
+        return `<div class="ussd-menu-item" onclick="simNavigate('${item.action}')">${item.text}</div>`;
+      }).join('');
+
+      content.innerHTML = `
+        <h4 style="color:var(--green-400);font-size:1.4rem;margin-bottom:4px;">${screen.title}</h4>
+        <p style="font-size:0.75rem;color:#64748b;margin-bottom:16px;">${screen.subtitle}</p>
+        <div class="ussd-menu" style="margin-bottom:16px;">
+          ${itemsHtml}
+        </div>
+      `;
+    }
+
+    function simNavigate(action) {
+      if (!action || action === simCurrent) return;
+      if (action === 'back') {
+        simBack();
+        return;
+      }
+      simHistory.push(simCurrent);
+      simCurrent = action;
+      document.getElementById('sim-input').value = '';
+      renderSim();
+    }
+
+    function simBack() {
+      if (simHistory.length > 0) {
+        simCurrent = simHistory.pop();
+      } else {
+        simCurrent = 'main';
+      }
+      document.getElementById('sim-input').value = '';
+      renderSim();
+    }
+
+    function simKey(key) {
+      const input = document.getElementById('sim-input');
+      input.value += key;
+    }
+
+    function simEnter() {
+      const input = document.getElementById('sim-input');
+      const val = input.value.trim();
+      if (val === '#' || val === '*') {
+        simBack();
+        input.value = '';
+        return;
+      }
+      const screen = simScreens[simCurrent];
+      if (screen && screen.items[parseInt(val) - 1]) {
+        const action = screen.items[parseInt(val) - 1].action;
+        if (action) {
+          simNavigate(action);
+          input.value = '';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

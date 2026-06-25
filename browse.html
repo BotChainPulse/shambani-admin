@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Fresh Produce - ShambaNi Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="./index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+        ShambaNi
+      </a>
+      <div class="nav-links">
+        <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="./browse.html" class="active"><i class="fas fa-search"></i> Browse</a>
+        <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD</a>
+        <a href="./about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell</a>
+        <a href="./admin/index.html" class="admin-link"><i class="fas fa-cog"></i> Admin</a>
+        <a href="./cart.html" id="nav-cart-btn" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+      </div>
+      <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <span class="flag-icon">&#127468;&#127463;</span>
+            <span class="lang-code">EN</span>
+            <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+          </button>
+          <div class="lang-dropdown">
+            <button data-lang="en"><span class="flag-icon">&#127468;&#127463;</span> English</button>
+            <button data-lang="sw"><span class="flag-icon">&#127472;&#127466;</span> Kiswahili</button>
+            <button data-lang="rw"><span class="flag-icon">&#127479;&#127484;</span> Runyarwanda</button>
+            <button data-lang="lg"><span class="flag-icon">&#127482;&#127468;</span> Luganda</button>
+          </div>
+        </div>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./browse.html" class="active"><i class="fas fa-search"></i> Browse Produce</a>
+    <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+    <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD *220#</a>
+    <a href="./about.html"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell as Farmer</a>
+    <a href="./admin/index.html"><i class="fas fa-cog"></i> Admin Dashboard</a>
+  </div>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container">
+        <h1>Browse Fresh Produce</h1>
+        <p>Discover fresh, locally-grown produce from verified farmers across East Africa</p>
+      </div>
+    </div>
+
+    <!-- Browse Section -->
+    <section class="section">
+      <div class="container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search produce, farmers, districts...">
+          <button class="btn btn-primary" onclick="filterProducts()"><i class="fas fa-search"></i> Search</button>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all" onclick="setCategory('all')">All Produce</button>
+          <button class="filter-btn" data-filter="vegetables" onclick="setCategory('vegetables')">Vegetables</button>
+          <button class="filter-btn" data-filter="fruits" onclick="setCategory('fruits')">Fruits</button>
+          <button class="filter-btn" data-filter="grains" onclick="setCategory('grains')">Grains</button>
+          <button class="filter-btn" data-filter="dairy" onclick="setCategory('dairy')">Dairy & Eggs</button>
+          <button class="filter-btn" data-filter="meat" onclick="setCategory('meat')">Meat</button>
+          <button class="filter-btn" data-filter="tubers" onclick="setCategory('tubers')">Tubers</button>
+          <button class="filter-btn" data-filter="spices" onclick="setCategory('spices')">Spices</button>
+        </div>
+
+        <!-- Results Count -->
+        <p id="results-count" style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">Showing all 24 products</p>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card" data-category="vegetables" data-name="Fresh Tomatoes">
+            <div class="product-image" style="background:linear-gradient(135deg,#EF5350,#C62828)">
+              <span class="cat-label">Vegetables</span>
+              <i class="fas fa-apple-alt" style="font-size:2rem;margin-bottom:8px;"></i>
+              Fresh Tomatoes
+            </div>
+            <div class="product-info">
+              <h4>Fresh Tomatoes</h4>
+              <p class="product-farmer">By John Mukasa &middot; Mukono</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 3,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.8 (24)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('tom-001','Fresh Tomatoes',3500,'John Mukasa','box','carrot','linear-gradient(135deg,#EF5350,#C62828)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card" data-category="vegetables" data-name="Green Peppers">
+            <div class="product-image" style="background:linear-gradient(135deg,#66BB6A,#2E7D32)">
+              <span class="cat-label">Vegetables</span>
+              <i class="fas fa-pepper-hot" style="font-size:2rem;margin-bottom:8px;"></i>
+              Green Peppers
+            </div>
+            <div class="product-info">
+              <h4>Green Peppers</h4>
+              <p class="product-farmer">By Sarah Auma &middot; Jinja</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 2,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.6 (18)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('veg-002','Green Peppers',2000,'Sarah Auma','kg','pepper-hot','linear-gradient(135deg,#66BB6A,#2E7D32)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card" data-category="fruits" data-name="Sweet Bananas">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFF176,#F9A825)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.5)">Fruits</span>
+              <i class="fas fa-lemon" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Sweet Bananas</span>
+            </div>
+            <div class="product-info">
+              <h4>Sweet Bananas (Bunch)</h4>
+              <p class="product-farmer">By Patrick Ochieng &middot; Mbarara</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 7,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.9 (42)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('frt-003','Sweet Bananas',7000,'Patrick Ochieng','bunch','lemon','linear-gradient(135deg,#FFF176,#F9A825)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card" data-category="dairy" data-name="Fresh Eggs">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFF8E1,#FFECB3)">
+              <span class="cat-label" style="color:#333;background:rgba(0,0,0,0.1)">Dairy</span>
+              <i class="fas fa-egg" style="font-size:2rem;margin-bottom:8px;color:#795548;"></i>
+              <span style="color:#5D4037;">Fresh Eggs</span>
+            </div>
+            <div class="product-info">
+              <h4>Fresh Eggs (Tray of 30)</h4>
+              <p class="product-farmer">By Esther Nalubega &middot; Wakiso</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 12,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.7 (56)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('dry-004','Fresh Eggs',12000,'Esther Nalubega','tray','egg','linear-gradient(135deg,#FFF8E1,#FFECB3)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="product-card" data-category="grains" data-name="Maize Flour">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFE082,#FF8F00)">
+              <span class="cat-label" style="color:#333;background:rgba(0,0,0,0.1)">Grains</span>
+              <i class="fas fa-wheat" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Maize Flour</span>
+            </div>
+            <div class="product-info">
+              <h4>Maize Flour (Posho) - 5kg</h4>
+              <p class="product-farmer">By Grace Akello &middot; Gulu</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 8,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.5 (31)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('grn-005','Maize Flour',8500,'Grace Akello','5kg bag','wheat','linear-gradient(135deg,#FFE082,#FF8F00)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="product-card" data-category="meat" data-name="Fresh Chicken">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFAB91,#D84315)">
+              <span class="cat-label">Meat</span>
+              <i class="fas fa-drumstick-bite" style="font-size:2rem;margin-bottom:8px;"></i>
+              Fresh Chicken
+            </div>
+            <div class="product-info">
+              <h4>Whole Chicken (Dressed)</h4>
+              <p class="product-farmer">By David Kato &middot; Masaka</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 18,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.8 (37)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('met-006','Whole Chicken',18000,'David Kato','each','drumstick-bite','linear-gradient(135deg,#FFAB91,#D84315)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 7 -->
+          <div class="product-card" data-category="tubers" data-name="Sweet Potatoes">
+            <div class="product-image" style="background:linear-gradient(135deg,#FF7043,#BF360C)">
+              <span class="cat-label">Tubers</span>
+              <i class="fas fa-cookie" style="font-size:2rem;margin-bottom:8px;"></i>
+              Sweet Potatoes
+            </div>
+            <div class="product-info">
+              <h4>Sweet Potatoes - 5kg</h4>
+              <p class="product-farmer">By Mary Nankya &middot; Luweero</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 5,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.4 (22)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('tbr-007','Sweet Potatoes',5000,'Mary Nankya','5kg','cookie','linear-gradient(135deg,#FF7043,#BF360C)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 8 -->
+          <div class="product-card" data-category="spices" data-name="Fresh Ginger">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFCC80,#EF6C00)">
+              <span class="cat-label" style="color:#333;background:rgba(0,0,0,0.1)">Spices</span>
+              <i class="fas fa-mortar-pestle" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Fresh Ginger</span>
+            </div>
+            <div class="product-info">
+              <h4>Fresh Ginger - 1kg</h4>
+              <p class="product-farmer">By Robert Ssempa &middot; Mpigi</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 4,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.6 (15)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('spi-008','Fresh Ginger',4500,'Robert Ssempa','1kg','mortar-pestle','linear-gradient(135deg,#FFCC80,#EF6C00)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 9 -->
+          <div class="product-card" data-category="vegetables" data-name="Onions">
+            <div class="product-image" style="background:linear-gradient(135deg,#CE93D8,#7B1FA2)">
+              <span class="cat-label">Vegetables</span>
+              <i class="fas fa-circle" style="font-size:2rem;margin-bottom:8px;"></i>
+              Red Onions
+            </div>
+            <div class="product-info">
+              <h4>Red Onions - 3kg</h4>
+              <p class="product-farmer">By Alice Komuhangi &middot; Kabale</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 4,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.3 (19)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('veg-009','Red Onions',4000,'Alice Komuhangi','3kg','circle','linear-gradient(135deg,#CE93D8,#7B1FA2)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 10 -->
+          <div class="product-card" data-category="fruits" data-name="Pineapples">
+            <div class="product-image" style="background:linear-gradient(135deg,#FDD835,#F57F17)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.5)">Fruits</span>
+              <i class="fas fa-apple-alt" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Sweet Pineapples</span>
+            </div>
+            <div class="product-info">
+              <h4>Sweet Pineapples (2pcs)</h4>
+              <p class="product-farmer">By James Okello &middot; Entebbe</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 6,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.9 (28)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('frt-010','Sweet Pineapples',6000,'James Okello','2 pieces','apple-alt','linear-gradient(135deg,#FDD835,#F57F17)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 11 -->
+          <div class="product-card" data-category="dairy" data-name="Fresh Milk">
+            <div class="product-image" style="background:linear-gradient(135deg,#90CAF9,#1565C0)">
+              <span class="cat-label">Dairy</span>
+              <i class="fas fa-glass-whiskey" style="font-size:2rem;margin-bottom:8px;"></i>
+              Fresh Milk
+            </div>
+            <div class="product-info">
+              <h4>Fresh Cow Milk - 1L</h4>
+              <p class="product-farmer">By Margaret Nakato &middot; Mityana</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 2,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.7 (45)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('dry-011','Fresh Milk',2500,'Margaret Nakato','1L','glass-whiskey','linear-gradient(135deg,#90CAF9,#1565C0)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 12 -->
+          <div class="product-card" data-category="grains" data-name="Rice">
+            <div class="product-image" style="background:linear-gradient(135deg,#E0E0E0,#9E9E9E)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.7)">Grains</span>
+              <i class="fas fa-seedling" style="font-size:2rem;margin-bottom:8px;color:#424242;"></i>
+              <span style="color:#424242;">Rice</span>
+            </div>
+            <div class="product-info">
+              <h4>Super Rice - 5kg</h4>
+              <p class="product-farmer">By Henry Lubwama &middot; Pallisa</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 15,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.5 (33)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('grn-012','Super Rice',15000,'Henry Lubwama','5kg','seedling','linear-gradient(135deg,#E0E0E0,#9E9E9E)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 13 -->
+          <div class="product-card" data-category="meat" data-name="Goat Meat">
+            <div class="product-image" style="background:linear-gradient(135deg,#B71C1C,#7F0000)">
+              <span class="cat-label">Meat</span>
+              <i class="fas fa-bone" style="font-size:2rem;margin-bottom:8px;"></i>
+              Goat Meat
+            </div>
+            <div class="product-info">
+              <h4>Fresh Goat Meat - 1kg</h4>
+              <p class="product-farmer">By Ibrahim Ssekandi &middot; Mbale</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 14,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.6 (20)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('met-013','Goat Meat',14000,'Ibrahim Ssekandi','1kg','bone','linear-gradient(135deg,#B71C1C,#7F0000)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 14 -->
+          <div class="product-card" data-category="tubers" data-name="Cassava">
+            <div class="product-image" style="background:linear-gradient(135deg,#D7CCC8,#5D4037)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.7)">Tubers</span>
+              <i class="fas fa-cookie" style="font-size:2rem;margin-bottom:8px;color:#3E2723;"></i>
+              <span style="color:#3E2723;">Cassava</span>
+            </div>
+            <div class="product-info">
+              <h4>Cassava Roots - 5kg</h4>
+              <p class="product-farmer">By Christine Namuli &middot; Kayunga</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 3,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.2 (14)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('tbr-014','Cassava Roots',3500,'Christine Namuli','5kg','cookie','linear-gradient(135deg,#D7CCC8,#5D4037)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 15 -->
+          <div class="product-card" data-category="spices" data-name="Chilli Peppers">
+            <div class="product-image" style="background:linear-gradient(135deg,#F44336,#B71C1C)">
+              <span class="cat-label">Spices</span>
+              <i class="fas fa-pepper-hot" style="font-size:2rem;margin-bottom:8px;"></i>
+              Chilli Peppers
+            </div>
+            <div class="product-info">
+              <h4>Hot Chilli Peppers - 500g</h4>
+              <p class="product-farmer">By Peter Mukwaya &middot; Mpigi</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 2,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.7 (26)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('spi-015','Hot Chilli Peppers',2500,'Peter Mukwaya','500g','pepper-hot','linear-gradient(135deg,#F44336,#B71C1C)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 16 -->
+          <div class="product-card" data-category="vegetables" data-name="Cabbage">
+            <div class="product-image" style="background:linear-gradient(135deg,#81C784,#388E3C)">
+              <span class="cat-label">Vegetables</span>
+              <i class="fas fa-leaf" style="font-size:2rem;margin-bottom:8px;"></i>
+              Fresh Cabbage
+            </div>
+            <div class="product-info">
+              <h4>Fresh Cabbage (Large)</h4>
+              <p class="product-farmer">By Grace Namara &middot; Fort Portal</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 2,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.5 (38)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('veg-016','Fresh Cabbage',2000,'Grace Namara','each','leaf','linear-gradient(135deg,#81C784,#388E3C)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 17 -->
+          <div class="product-card" data-category="fruits" data-name="Mangoes">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFB74D,#E65100)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.5)">Fruits</span>
+              <i class="fas fa-lemon" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Sweet Mangoes</span>
+            </div>
+            <div class="product-info">
+              <h4>Sweet Mangoes - Dozen</h4>
+              <p class="product-farmer">By Charles Odoi &middot; Soroti</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 10,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.8 (50)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('frt-017','Sweet Mangoes',10000,'Charles Odoi','dozen','lemon','linear-gradient(135deg,#FFB74D,#E65100)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 18 -->
+          <div class="product-card" data-category="dairy" data-name="Local Cheese">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFF9C4,#FBC02D)">
+              <span class="cat-label" style="color:#333;background:rgba(0,0,0,0.1)">Dairy</span>
+              <i class="fas fa-cheese" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Local Cheese</span>
+            </div>
+            <div class="product-info">
+              <h4>Local Cheese - 500g</h4>
+              <p class="product-farmer">By Rebecca Acan &middot; Lira</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 9,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.4 (12)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('dry-018','Local Cheese',9000,'Rebecca Acan','500g','cheese','linear-gradient(135deg,#FFF9C4,#FBC02D)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 19 -->
+          <div class="product-card" data-category="grains" data-name="Beans">
+            <div class="product-image" style="background:linear-gradient(135deg,#A1887F,#4E342E)">
+              <span class="cat-label">Grains</span>
+              <i class="fas fa-circle" style="font-size:2rem;margin-bottom:8px;"></i>
+              Nambale Beans
+            </div>
+            <div class="product-info">
+              <h4>Nambale Beans - 3kg</h4>
+              <p class="product-farmer">By Samuel Owori &middot; Iganga</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 7,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.6 (29)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('grn-019','Nambale Beans',7500,'Samuel Owori','3kg','circle','linear-gradient(135deg,#A1887F,#4E342E)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 20 -->
+          <div class="product-card" data-category="meat" data-name="Fresh Fish">
+            <div class="product-image" style="background:linear-gradient(135deg,#4FC3F7,#0277BD)">
+              <span class="cat-label">Meat</span>
+              <i class="fas fa-fish" style="font-size:2rem;margin-bottom:8px;"></i>
+              Fresh Tilapia
+            </div>
+            <div class="product-info">
+              <h4>Fresh Tilapia - 1kg</h4>
+              <p class="product-farmer">By Daniel Ouma &middot; Jinja</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 13,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.9 (41)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('met-020','Fresh Tilapia',13000,'Daniel Ouma','1kg','fish','linear-gradient(135deg,#4FC3F7,#0277BD)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 21 -->
+          <div class="product-card" data-category="vegetables" data-name="Carrots">
+            <div class="product-image" style="background:linear-gradient(135deg,#FF8A65,#D84315)">
+              <span class="cat-label">Vegetables</span>
+              <i class="fas fa-carrot" style="font-size:2rem;margin-bottom:8px;"></i>
+              Fresh Carrots
+            </div>
+            <div class="product-info">
+              <h4>Fresh Carrots - 2kg</h4>
+              <p class="product-farmer">By Lydia Nakalema &middot; Kasese</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 3,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.3 (17)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('veg-021','Fresh Carrots',3000,'Lydia Nakalema','2kg','carrot','linear-gradient(135deg,#FF8A65,#D84315)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 22 -->
+          <div class="product-card" data-category="tubers" data-name="Irish Potatoes">
+            <div class="product-image" style="background:linear-gradient(135deg,#BCAAA4,#6D4C41)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.7)">Tubers</span>
+              <i class="fas fa-cookie" style="font-size:2rem;margin-bottom:8px;color:#3E2723;"></i>
+              <span style="color:#3E2723;">Irish Potatoes</span>
+            </div>
+            <div class="product-info">
+              <h4>Irish Potatoes - 5kg</h4>
+              <p class="product-farmer">By Moses Tumwine &middot; Kabale</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 6,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.5 (23)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('tbr-022','Irish Potatoes',6500,'Moses Tumwine','5kg','cookie','linear-gradient(135deg,#BCAAA4,#6D4C41)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 23 -->
+          <div class="product-card" data-category="fruits" data-name="Watermelon">
+            <div class="product-image" style="background:linear-gradient(135deg,#EF5350,#43A047)">
+              <span class="cat-label" style="background:rgba(255,255,255,0.25)">Fruits</span>
+              <i class="fas fa-lemon" style="font-size:2rem;margin-bottom:8px;"></i>
+              Watermelon
+            </div>
+            <div class="product-info">
+              <h4>Large Watermelon</h4>
+              <p class="product-farmer">By Tom Kisembo &middot; Nakasongola</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 5,000</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.7 (35)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('frt-023','Watermelon',5000,'Tom Kisembo','each','lemon','linear-gradient(135deg,#EF5350,#43A047)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 24 -->
+          <div class="product-card" data-category="spices" data-name="Turmeric">
+            <div class="product-image" style="background:linear-gradient(135deg,#FFB300,#FF6F00)">
+              <span class="cat-label" style="color:#333;background:rgba(255,255,255,0.5)">Spices</span>
+              <i class="fas fa-mortar-pestle" style="font-size:2rem;margin-bottom:8px;color:#5D4037;"></i>
+              <span style="color:#5D4037;">Turmeric</span>
+            </div>
+            <div class="product-info">
+              <h4>Fresh Turmeric - 500g</h4>
+              <p class="product-farmer">By Rose Nakibuuka &middot; Kalangala</p>
+              <div class="product-meta">
+                <span class="product-price">UGX 3,500</span>
+                <span class="product-rating"><i class="fas fa-star"></i> 4.4 (11)</span>
+              </div>
+              <button class="btn btn-primary btn-sm w-full" onclick="addToCart('spi-024','Fresh Turmeric',3500,'Rose Nakibuuka','500g','mortar-pestle','linear-gradient(135deg,#FFB300,#FF6F00)')">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+            ShambaNi
+          </a>
+          <p>Connecting farmers to buyers across East Africa.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./browse.html">Browse Produce</a>
+          <a href="./farmer-register.html">Register as Farmer</a>
+          <a href="./ussd.html">USSD *220#</a>
+          <a href="./about.html">About Us</a>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="./about.html">FAQ</a>
+          <a href="./about.html">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:info@shambani.com"><i class="fas fa-envelope" style="margin-right:6px;"></i>info@shambani.com</a>
+          <a href="tel:+256700123456"><i class="fas fa-phone" style="margin-right:6px;"></i>+256 700 123 456</a>
+          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i>Kampala, Uganda</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShambaNi Marketplace. All rights reserved.</p>
+        <p>Made with <i class="fas fa-heart" style="color:var(--red);"></i> for East African Farmers</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="./app.js"></script>
+  <script>
+    // Category filter
+    let currentCategory = 'all';
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === cat);
+      });
+      filterProducts();
+    }
+
+    function filterProducts() {
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const cat = card.dataset.category;
+        const matchCat = currentCategory === 'all' || cat === currentCategory;
+        const matchSearch = !search || name.includes(search);
+
+        if (matchCat && matchSearch) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const countEl = document.getElementById('results-count');
+      if (countEl) {
+        const catLabel = currentCategory === 'all' ? 'all products' : currentCategory;
+        countEl.textContent = `Showing ${visible} ${catLabel}${search ? ' matching "' + search + '"' : ''}`;
+      }
+    }
+
+    function addToCart(id, name, price, farmer, unit, icon, bg) {
+      Cart.add({ id, name, price, farmer, unit, icon, bg });
+    }
+
+    document.getElementById('search-input')?.addEventListener('input', filterProducts);
+
+    // URL param handling
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat');
+    if (catParam) setCategory(catParam);
+  </script>
+</body>
+</html>

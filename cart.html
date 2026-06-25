@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - ShambaNi Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="./index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+        ShambaNi
+      </a>
+      <div class="nav-links">
+        <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="./browse.html"><i class="fas fa-search"></i> Browse</a>
+        <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD</a>
+        <a href="./about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell</a>
+        <a href="./admin/index.html" class="admin-link"><i class="fas fa-cog"></i> Admin</a>
+        <a href="./cart.html" id="nav-cart-btn" class="cart-btn active">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+      </div>
+      <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <span class="flag-icon">&#127468;&#127463;</span>
+            <span class="lang-code">EN</span>
+            <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+          </button>
+          <div class="lang-dropdown">
+            <button data-lang="en"><span class="flag-icon">&#127468;&#127463;</span> English</button>
+            <button data-lang="sw"><span class="flag-icon">&#127472;&#127466;</span> Kiswahili</button>
+            <button data-lang="rw"><span class="flag-icon">&#127479;&#127484;</span> Runyarwanda</button>
+            <button data-lang="lg"><span class="flag-icon">&#127482;&#127468;</span> Luganda</button>
+          </div>
+        </div>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./browse.html"><i class="fas fa-search"></i> Browse Produce</a>
+    <a href="./cart.html" class="active"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+    <a href="./ussd.html"><i class="fas fa-mobile-alt"></i> USSD *220#</a>
+    <a href="./about.html"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="./farmer-register.html"><i class="fas fa-tractor"></i> Sell as Farmer</a>
+    <a href="./admin/index.html"><i class="fas fa-cog"></i> Admin Dashboard</a>
+  </div>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container">
+        <h1><i class="fas fa-shopping-cart" style="color:var(--green-500)"></i> Shopping Cart</h1>
+        <p>Review your items and proceed to checkout</p>
+      </div>
+    </div>
+
+    <!-- Cart Content -->
+    <section class="section">
+      <div class="container">
+        <div class="cart-grid">
+          <!-- Cart Items -->
+          <div>
+            <div class="cart-items" id="cart-items-container">
+              <!-- Items rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="cart-summary" id="cart-summary-container">
+            <h3><i class="fas fa-receipt" style="color:var(--green-500);margin-right:8px;"></i>Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="summary-subtotal">UGX 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Platform Fee (2.5%)</span>
+              <span id="summary-fee">UGX 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Delivery</span>
+              <span style="color:var(--green-600);font-weight:600;">Free</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="summary-total">UGX 0</span>
+            </div>
+
+            <!-- Checkout Form -->
+            <div class="checkout-form">
+              <h4 style="margin-bottom:16px;color:var(--green-900);"><i class="fas fa-user" style="margin-right:6px;"></i>Delivery Details</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" placeholder="John" id="checkout-fname">
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" placeholder="Doe" id="checkout-lname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+256 700 123 456" id="checkout-phone">
+              </div>
+              <div class="form-group">
+                <label>Delivery Address</label>
+                <input type="text" placeholder="Plot 45, Kampala Road" id="checkout-address">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" placeholder="Kampala" id="checkout-city">
+                </div>
+                <div class="form-group">
+                  <label>District</label>
+                  <input type="text" placeholder="Kampala" id="checkout-district">
+                </div>
+              </div>
+
+              <!-- Payment Methods -->
+              <h4 style="margin:24px 0 16px;color:var(--green-900);"><i class="fas fa-credit-card" style="margin-right:6px;"></i>Payment Method</h4>
+              <div class="payment-methods">
+                <label class="payment-method selected">
+                  <input type="radio" name="payment" value="paypal" checked>
+                  <div class="payment-method-icon" style="background:var(--blue-light);color:var(--blue);"><i class="fab fa-paypal"></i></div>
+                  <div class="payment-method-info">
+                    <h5>PayPal</h5>
+                    <p>Pay to @LutwamaReagan</p>
+                  </div>
+                </label>
+                <label class="payment-method">
+                  <input type="radio" name="payment" value="airtel">
+                  <div class="payment-method-icon" style="background:var(--red-light);color:var(--red);"><i class="fas fa-mobile-alt"></i></div>
+                  <div class="payment-method-info">
+                    <h5>Airtel Money</h5>
+                    <p>+256 705 123 456</p>
+                  </div>
+                </label>
+                <label class="payment-method">
+                  <input type="radio" name="payment" value="mtn">
+                  <div class="payment-method-icon" style="background:var(--orange-light);color:var(--orange);"><i class="fas fa-mobile-alt"></i></div>
+                  <div class="payment-method-info">
+                    <h5>MTN Mobile Money</h5>
+                    <p>+256 77X XXX XXX</p>
+                  </div>
+                </label>
+                <label class="payment-method">
+                  <input type="radio" name="payment" value="bank">
+                  <div class="payment-method-icon" style="background:var(--purple-light);color:var(--purple);"><i class="fas fa-university"></i></div>
+                  <div class="payment-method-info">
+                    <h5>Bank Transfer</h5>
+                    <p>Stanbic Bank Uganda</p>
+                  </div>
+                </label>
+              </div>
+
+              <button class="btn btn-primary w-full btn-lg" style="margin-top:20px;" onclick="placeOrder()">
+                <i class="fas fa-lock"></i> Place Order
+              </button>
+              <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:12px;">
+                <i class="fas fa-shield-alt"></i> Secure checkout powered by ShambaNi
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+            ShambaNi
+          </a>
+          <p>Connecting farmers to buyers across East Africa.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./browse.html">Browse Produce</a>
+          <a href="./farmer-register.html">Register as Farmer</a>
+          <a href="./ussd.html">USSD *220#</a>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="./about.html">FAQ</a>
+          <a href="./about.html">Contact</a>
+          <a href="#">Privacy</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:info@shambani.com"><i class="fas fa-envelope" style="margin-right:6px;"></i>info@shambani.com</a>
+          <a href="tel:+256700123456"><i class="fas fa-phone" style="margin-right:6px;"></i>+256 700 123 456</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShambaNi Marketplace. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/256700123456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="./app.js"></script>
+  <script>
+    // Render cart on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      Cart.renderCartPage();
+    });
+
+    function placeOrder() {
+      const cart = Cart.getCheckoutData();
+      if (cart.items.length === 0) {
+        showToast('Your cart is empty!', 'error');
+        return;
+      }
+
+      const fname = document.getElementById('checkout-fname')?.value;
+      const lname = document.getElementById('checkout-lname')?.value;
+      const phone = document.getElementById('checkout-phone')?.value;
+      const address = document.getElementById('checkout-address')?.value;
+
+      if (!fname || !lname || !phone || !address) {
+        showToast('Please fill in all delivery details', 'error');
+        return;
+      }
+
+      const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'paypal';
+      const paymentLabels = {
+        paypal: 'PayPal (@LutwamaReagan)',
+        airtel: 'Airtel Money',
+        mtn: 'MTN Mobile Money',
+        bank: 'Bank Transfer'
+      };
+
+      // Simulate order placement
+      showToast(`Order placed successfully! Payment via ${paymentLabels[paymentMethod]}`, 'success');
+
+      // Clear cart after delay
+      setTimeout(() => {
+        Cart.clear();
+        window.location.href = './browse.html';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
